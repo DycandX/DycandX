@@ -30,6 +30,15 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           USER_NAME: ${{ secrets.USER_NAME }}
         run: python today.py
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}
+      - name: Install Playwright Chromium
+        run: python -m playwright install chromium --with-deps
+      - name: Convert SVG to WebP
+        run: python convert.py
       - name: Commit
         run: |-
           git add .
