@@ -1,0 +1,36 @@
+name: PR Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check branch name
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          if ! echo "$BRANCH" | grep -qE '^(feat|fix|perf|sec|chore|docs)/'; then
+            echo "❌ Branch name must start with feat/, fix/, perf/, sec/, chore/, or docs/"
+            exit 1
+          fi
+          echo "✅ Branch name: $BRANCH"
+
+  commit-message:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check commit messages
+        run: |
+          git log --format=%s origin/${{ github.base_ref }}..HEAD | while read msg; do
+            if ! echo "$msg" | grep -qE '^(feat|fix|perf|sec|refactor|chore|docs|style)\(.+\):\s.+'; then
+              echo "❌ Invalid commit: $msg"
+              echo "   Must match: <type>(<scope>): <message>"
+              exit 1
+            fi
+          done
+          echo "✅ All commit messages valid"
