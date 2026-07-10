@@ -4,7 +4,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "35 2 * * *"
+    - cron: "0 3 * * *"
       timezone: "Asia/Jakarta"
 jobs:
   build:
