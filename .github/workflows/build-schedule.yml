@@ -2,7 +2,7 @@ name: README build (Schedule)
 
 on:
   schedule:
-    - cron: "40 3 * * *"
+    - cron: "45 3 * * *"
       timezone: "Asia/Jakarta"
   workflow_dispatch:
 
