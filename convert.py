@@ -8,20 +8,29 @@ SVGS = [
     "light_mode.svg",
 ]
 
+# Match each SVG's background color so rounded corners don't bleed white
+BG_COLORS = {
+    "dark_mode.svg": "#161b22",
+    "light_mode.svg": "#ffffff",
+}
+
 with sync_playwright() as p:
     browser = p.chromium.launch()
     for filename in SVGS:
-        # Load local SVG file using absolute path and file protocol
         file_path = f"file://{os.path.abspath(filename)}"
         print(f"Loading {file_path}")
-        
+
+        bg = BG_COLORS.get(filename, "#161b22")
         page = browser.new_page(viewport={"width": 985, "height": 530})
+        # Set background to match SVG background so rounded corners are clean
+        page.emulate_media(color_scheme="dark" if "dark" in filename else "light")
         page.goto(file_path, wait_until="networkidle")
+        page.add_style_tag(content=f"html, body {{ background: {bg} !important; margin: 0; padding: 0; }}")
 
         frames = []
         for _ in range(30):
             page.wait_for_timeout(100)
-            frames.append(page.screenshot())
+            frames.append(page.screenshot(omit_background=False))
 
         name = filename.replace(".svg", ".webp")
         images = [Image.open(io.BytesIO(f)) for f in frames]
