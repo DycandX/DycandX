@@ -1,11 +1,11 @@
-name: README build
+name: README build (Schedule)
+
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: "0 3 * * *"
+    - cron: "15 3 * * *"
       timezone: "Asia/Jakarta"
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
