@@ -445,7 +445,7 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     # Stats section: two-column layout with | separator
     # Line: . Repos:dots repo_val {Contributed: contrib_val} | Stars:dots star_val
     # Left part: ". Repos:"(8) + dots + " "(1) + repo_val + " {Contributed: "(15) + contrib_val + "}"(1)
-    remaining = MAX_CHARS - 34 - len(repo_val) - len(contrib_val) - len(star_val)
+    remaining = MAX_CHARS - 33 - len(repo_val) - len(contrib_val) - len(star_val)
     len_repo_dots = max(2, int(remaining * 0.55))
     find_and_replace(root, 'repo_data_dots', get_justify_dots(len_repo_dots))
 
