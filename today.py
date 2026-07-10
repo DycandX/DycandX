@@ -386,9 +386,9 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     find_and_replace(root, 'loc_del', loc_del_val)
 
     # 3. Calculate dynamic justify dots
-    # Age justification (static target width 51)
-    age_just = max(0, 51 - len(age_val))
-    find_and_replace(root, 'age_data_dots', get_justify_dots(age_just))
+    # Age: fixed 17 dots (19 chars total) → value starts at column 28
+    # ". Uptime:" = 9 chars, dots = 19 chars → 9+19 = 28 ✓
+    find_and_replace(root, 'age_data_dots', get_justify_dots(19))
 
     # Repos & Contributed (target 32 characters before the bar)
     # . Repos: (8 chars) + {Contributed: (15 chars) + contrib_val + } (1 char) = 24 + len(contrib_val)
