@@ -5,9 +5,20 @@ import os
 from lxml import etree
 import time
 import hashlib
-from dotenv import load_dotenv
 
-load_dotenv()
+
+def load_env():
+    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env')
+    if os.path.exists(env_path):
+        with open(env_path) as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    key, _, val = line.partition('=')
+                    os.environ.setdefault(key.strip(), val.strip())
+
+
+load_env()
 
 # Fine-grained personal access token with All Repositories access:
 # Account permissions: read:Followers, read:Starring, read:Watching
