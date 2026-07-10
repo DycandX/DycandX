@@ -340,21 +340,83 @@ def stars_counter(data):
     return total_stars
 
 
+def to_formatted_str(val):
+    if isinstance(val, int):
+        return f"{'{:,}'.format(val)}"
+    return str(val)
+
+
 def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib_data, follower_data, loc_data):
     """
     Parse SVG files and update elements with my age, commits, stars, repositories, and lines written
     """
     tree = etree.parse(filename)
     root = tree.getroot()
-    justify_format(root, 'age_data', age_data, 51)
-    justify_format(root, 'commit_data', commit_data, 22)
-    justify_format(root, 'star_data', star_data, 14)
-    justify_format(root, 'repo_data', repo_data, 6)
-    justify_format(root, 'contrib_data', contrib_data)
-    justify_format(root, 'follower_data', follower_data, 10)
-    justify_format(root, 'loc_data', loc_data[2], 9)
-    justify_format(root, 'loc_add', loc_data[0])
-    justify_format(root, 'loc_del', loc_data[1], 7)
+
+    # 1. Format all values
+    age_val = str(age_data)
+    commit_val = to_formatted_str(commit_data)
+    star_val = to_formatted_str(star_data)
+    repo_val = to_formatted_str(repo_data)
+    contrib_val = to_formatted_str(contrib_data)
+    follower_val = to_formatted_str(follower_data)
+    loc_val = to_formatted_str(loc_data[2])
+    loc_add_val = to_formatted_str(loc_data[0])
+    loc_del_val = to_formatted_str(loc_data[1])
+
+    # 2. Update basic elements
+    find_and_replace(root, 'age_data', age_val)
+    find_and_replace(root, 'commit_data', commit_val)
+    find_and_replace(root, 'star_data', star_val)
+    find_and_replace(root, 'repo_data', repo_val)
+    find_and_replace(root, 'contrib_data', contrib_val)
+    find_and_replace(root, 'follower_data', follower_val)
+    find_and_replace(root, 'loc_data', loc_val)
+    find_and_replace(root, 'loc_add', loc_add_val)
+    find_and_replace(root, 'loc_del', loc_del_val)
+
+    # 3. Calculate dynamic justify dots
+    # Age justification (static target width 51)
+    age_just = max(0, 51 - len(age_val))
+    find_and_replace(root, 'age_data_dots', ' ' + ('.' * age_just) + ' ' if age_just > 2 else {0: '', 1: ' ', 2: '. '}[age_just])
+
+    # Repos & Contributed (target 32 characters before the bar)
+    # . Repos: (8 chars) + {Contributed: (15 chars) + contrib_val + } (1 char) = 24 + len(contrib_val)
+    len_repo_dots = max(2, 32 - 8 - len(repo_val) - 15 - len(contrib_val) - 1)
+    repo_dots = ' ' + ('.' * len_repo_dots) + ' ' if len_repo_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_repo_dots]
+    find_and_replace(root, 'repo_data_dots', repo_dots)
+
+    # Actual length of first line before the bar
+    actual_first_len = 8 + len_repo_dots + len(repo_val) + 15 + len(contrib_val) + 1
+
+    # Commits (align with the bar)
+    # . Commmits: (11 chars)
+    len_commit_dots = max(2, actual_first_len - 11 - len(commit_val))
+    commit_dots = ' ' + ('.' * len_commit_dots) + ' ' if len_commit_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_commit_dots]
+    find_and_replace(root, 'commit_data_dots', commit_dots)
+
+    # Stars (target width after bar 17)
+    # | Stars: (9 chars)
+    len_star_dots = max(2, 17 - 9 - len(star_val))
+    star_dots = ' ' + ('.' * len_star_dots) + ' ' if len_star_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_star_dots]
+    find_and_replace(root, 'star_data_dots', star_dots)
+
+    # Followers (align with stars)
+    # | Followers: (13 chars)
+    len_follower_dots = max(2, 17 - 13 - len(follower_val))
+    follower_dots = ' ' + ('.' * len_follower_dots) + ' ' if len_follower_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_follower_dots]
+    find_and_replace(root, 'follower_data_dots', follower_dots)
+
+    # Lines of Code (nice spacing)
+    len_loc_dots = max(4, 11 - len(loc_val))
+    loc_dots = ' ' + ('.' * len_loc_dots) + ' ' if len_loc_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_loc_dots]
+    find_and_replace(root, 'loc_data_dots', loc_dots)
+
+    # Deletions spacing
+    len_loc_del_dots = max(2, 7 - len(loc_del_val))
+    loc_del_dots = ' ' + ('.' * len_loc_del_dots) + ' ' if len_loc_del_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_loc_del_dots]
+    find_and_replace(root, 'loc_del_dots', loc_del_dots)
+
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
