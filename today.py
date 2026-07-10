@@ -399,8 +399,8 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     actual_first_len = 8 + len_repo_dots + len(repo_val) + 15 + len(contrib_val) + 1
 
     # Commits (align with the bar)
-    # . Commmits: (11 chars)
-    len_commit_dots = max(2, actual_first_len - 11 - len(commit_val))
+    # . Commits: (10 chars)
+    len_commit_dots = max(2, actual_first_len - 10 - len(commit_val))
     find_and_replace(root, 'commit_data_dots', get_justify_dots(len_commit_dots))
 
     # Stars (target width after bar 17)
@@ -415,13 +415,9 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     len_follower_dots = max(2, actual_star_len - 13 - len(follower_val))
     find_and_replace(root, 'follower_data_dots', get_justify_dots(len_follower_dots))
 
-    # Lines of Code (nice spacing)
-    len_loc_dots = max(4, 11 - len(loc_val))
-    find_and_replace(root, 'loc_data_dots', get_justify_dots(len_loc_dots))
-
-    # Deletions spacing
-    len_loc_del_dots = max(2, 7 - len(loc_del_val))
-    find_and_replace(root, 'loc_del_dots', get_justify_dots(len_loc_del_dots))
+    # Lines of Code (nice spacing - no dots)
+    find_and_replace(root, 'loc_data_dots', ' ')
+    find_and_replace(root, 'loc_del_dots', ' ')
 
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
