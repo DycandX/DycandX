@@ -1,0 +1,41 @@
+name: README build
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 4 * * *"
+      timezone: "Asia/Jakarta"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/cache/requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+      - run: python -m pip install -r cache/requirements.txt
+      - name: Update README
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          USER_NAME: ${{ secrets.USER_NAME }}
+        run: python today.py
+      - name: Commit
+        run: |-
+          git add dark_mode.svg light_mode.svg cache/
+          git diff --staged --quiet || (
+            git config --global user.email "karismaviki@gmail.com"
+            git config --global user.name "DycandX/GitHub-Actions-Bot"
+            git commit -m "Updated README"
+            git push
+          )
