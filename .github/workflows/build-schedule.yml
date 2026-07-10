@@ -40,4 +40,5 @@ jobs:
           git config --global user.email "karismaviki@gmail.com"
           git config --global user.name "DycandX/GitHub-Actions-Bot"
           git commit -m "Updated README" -a || echo "No changes to commit"
+          git pull --rebase
           git push
