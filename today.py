@@ -5,6 +5,9 @@ import os
 from lxml import etree
 import time
 import hashlib
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Fine-grained personal access token with All Repositories access:
 # Account permissions: read:Followers, read:Starring, read:Watching
@@ -12,6 +15,7 @@ import hashlib
 # Issues and pull requests permissions not needed at the moment, but may be used in the future
 HEADERS = {'authorization': 'token '+ os.environ['ACCESS_TOKEN']}
 USER_NAME = os.environ.get('USER_NAME', 'DycandX')
+MAX_CHARS = 64
 QUERY_COUNT = {'user_getter': 0, 'follower_getter': 0, 'graph_repos_stars': 0, 'recursive_loc': 0, 'graph_commits': 0, 'loc_query': 0}
 
 
@@ -385,37 +389,70 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     find_and_replace(root, 'loc_add', loc_add_val)
     find_and_replace(root, 'loc_del', loc_del_val)
 
-    # 3. Calculate dynamic justify dots
-    # Age: fixed 17 dots (19 chars total) → value starts at column 28
-    # ". Uptime:" = 9 chars, dots = 19 chars → 9+19 = 28 ✓
-    find_and_replace(root, 'age_data_dots', get_justify_dots(19))
+    # 3. Separators - fill to MAX_CHARS
+    sep_configs = [
+        ('header_separator', 'zulvikar@is-a.dev'),
+        ('contact_separator', '- Contact'),
+        ('stats_separator', '- GitHub Stats'),
+    ]
+    for sep_id, prefix in sep_configs:
+        fill = MAX_CHARS - len(prefix)
+        if fill <= 2:
+            sep = " -"
+        elif fill == 3:
+            sep = " --"
+        elif fill == 4:
+            sep = " ---"
+        else:
+            sep = " -\u2014" + "\u2014" * max(0, fill - 5) + "-\u2014"
+        find_and_replace(root, sep_id, sep)
 
-    # Repos & Contributed (target 32 characters before the bar)
-    # . Repos: (8 chars) + {Contributed: (15 chars) + contrib_val + } (1 char) = 24 + len(contrib_val)
-    len_repo_dots = max(2, 32 - 8 - len(repo_val) - 15 - len(contrib_val) - 1)
+    # 4. Static dot lines - calculate dots to fill MAX_CHARS per line
+    static_lines = [
+        ('os_dots', 'OS', 'Windows 11, Ubuntu'),
+        ('host_dots', 'Host', 'OMEN 15'),
+        ('kernel_dots', 'Kernel', 'Fullstack Dev, Backend, AL/ML'),
+        ('ide_dots', 'IDE', 'VScode, Clion, Arduino IDE'),
+        ('languages_prog_dots', 'Languages.Programming', 'Python, JS, TS, C/C++, PHP, Java, SQL'),
+        ('languages_real_dots', 'Languages.Real', 'English, Indonesian'),
+        ('hobbies_software_dots', 'Hobbies.Software', 'AI Project, Web Dev, Discord Bot'),
+        ('hobbies_life_dots', 'Hobbies.Life', 'Powerlifting, Gaming, Coffee'),
+        ('portfolio_dots', 'Portofolio', 'zulvikar.is-a.dev/'),
+        ('email_dots', 'Email.Personal', 'zulvikar.kharisma22@gmail.com'),
+        ('linkedin_dots', 'LinkedIn', 'in/zulvikar-kharisma'),
+        ('discord_dots', 'Discord', 'dycandx'),
+    ]
+    for dot_id, key, val in static_lines:
+        n = max(2, MAX_CHARS - 3 - len(key) - len(val))
+        find_and_replace(root, dot_id, get_justify_dots(n))
+
+    # 5. Dynamic lines - values that change
+    # Age: . Uptime: (key len=6)
+    age_dots = max(2, MAX_CHARS - 3 - 6 - len(age_val))
+    find_and_replace(root, 'age_data_dots', get_justify_dots(age_dots))
+
+    # Stats section: two-column layout with | separator
+    # Line: . Repos:dots repo_val {Contributed: contrib_val} | Stars:dots star_val
+    # Left part: ". Repos:"(8) + dots + " "(1) + repo_val + " {Contributed: "(15) + contrib_val + "}"(1)
+    remaining = MAX_CHARS - 34 - len(repo_val) - len(contrib_val) - len(star_val)
+    len_repo_dots = max(2, int(remaining * 0.55))
     find_and_replace(root, 'repo_data_dots', get_justify_dots(len_repo_dots))
 
-    # Actual length of first line before the bar
-    actual_first_len = 8 + len_repo_dots + len(repo_val) + 15 + len(contrib_val) + 1
+    actual_left = 8 + len_repo_dots + len(repo_val) + 15 + len(contrib_val) + 1
 
-    # Commits (align with the bar)
-    # . Commits: (10 chars)
-    len_commit_dots = max(2, actual_first_len - 10 - len(commit_val))
-    find_and_replace(root, 'commit_data_dots', get_justify_dots(len_commit_dots))
-
-    # Stars (target width after bar 17)
-    # | Stars: (9 chars)
-    len_star_dots = max(2, 17 - 9 - len(star_val))
+    # Stars (right of |): " | Stars:"(9) + dots + star_val
+    len_star_dots = max(2, remaining - len_repo_dots)
     find_and_replace(root, 'star_data_dots', get_justify_dots(len_star_dots))
 
-    actual_star_len = 9 + len_star_dots + len(star_val)
+    # Commits line: ". Commits:"(10) + dots + commit_val (align | with repos line)
+    len_commit_dots = max(2, actual_left - 10 - len(commit_val))
+    find_and_replace(root, 'commit_data_dots', get_justify_dots(len_commit_dots))
 
-    # Followers (align with stars on the right)
-    # | Followers: (13 chars)
-    len_follower_dots = max(2, actual_star_len - 13 - len(follower_val))
+    # Followers: " | Followers:"(13) + dots + follower_val (fill to MAX_CHARS)
+    len_follower_dots = max(2, MAX_CHARS - actual_left - 13 - len(follower_val))
     find_and_replace(root, 'follower_data_dots', get_justify_dots(len_follower_dots))
 
-    # Lines of Code (nice spacing - no dots)
+    # Lines of Code (no dots)
     find_and_replace(root, 'loc_data_dots', ' ')
     find_and_replace(root, 'loc_del_dots', ' ')
 
