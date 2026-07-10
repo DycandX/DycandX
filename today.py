@@ -187,6 +187,7 @@ def loc_query(owner_affiliation, comment_size=0, force_cache=False, cursor=None,
                 node {
                     ... on Repository {
                         nameWithOwner
+                        isFork
                         defaultBranchRef {
                             target {
                                 ... on Commit {
@@ -244,6 +245,9 @@ def cache_builder(edges, comment_size, force_cache, loc_add=0, loc_del=0):
         repo_hash, commit_count, *__ = data[index].split()
         if repo_hash == hashlib.sha256(edges[index]['node']['nameWithOwner'].encode('utf-8')).hexdigest():
             try:
+                if edges[index]['node']['isFork']:
+                    data[index] = repo_hash + ' 0 0 0 0\n'
+                    continue
                 if int(commit_count) != edges[index]['node']['defaultBranchRef']['target']['history']['totalCount']:
                     # if commit count has changed, update loc for that repo
                     owner, repo_name = edges[index]['node']['nameWithOwner'].split('/')
