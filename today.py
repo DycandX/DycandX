@@ -340,6 +340,16 @@ def stars_counter(data):
     return total_stars
 
 
+def get_justify_dots(target_len):
+    if target_len <= 0:
+        return ""
+    if target_len == 1:
+        return " "
+    if target_len == 2:
+        return ". "
+    return " " + "." * (target_len - 2) + " "
+
+
 def to_formatted_str(val):
     if isinstance(val, int):
         return f"{'{:,}'.format(val)}"
@@ -378,13 +388,12 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     # 3. Calculate dynamic justify dots
     # Age justification (static target width 51)
     age_just = max(0, 51 - len(age_val))
-    find_and_replace(root, 'age_data_dots', ' ' + ('.' * age_just) + ' ' if age_just > 2 else {0: '', 1: ' ', 2: '. '}[age_just])
+    find_and_replace(root, 'age_data_dots', get_justify_dots(age_just))
 
     # Repos & Contributed (target 32 characters before the bar)
     # . Repos: (8 chars) + {Contributed: (15 chars) + contrib_val + } (1 char) = 24 + len(contrib_val)
     len_repo_dots = max(2, 32 - 8 - len(repo_val) - 15 - len(contrib_val) - 1)
-    repo_dots = ' ' + ('.' * len_repo_dots) + ' ' if len_repo_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_repo_dots]
-    find_and_replace(root, 'repo_data_dots', repo_dots)
+    find_and_replace(root, 'repo_data_dots', get_justify_dots(len_repo_dots))
 
     # Actual length of first line before the bar
     actual_first_len = 8 + len_repo_dots + len(repo_val) + 15 + len(contrib_val) + 1
@@ -392,30 +401,27 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     # Commits (align with the bar)
     # . Commmits: (11 chars)
     len_commit_dots = max(2, actual_first_len - 11 - len(commit_val))
-    commit_dots = ' ' + ('.' * len_commit_dots) + ' ' if len_commit_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_commit_dots]
-    find_and_replace(root, 'commit_data_dots', commit_dots)
+    find_and_replace(root, 'commit_data_dots', get_justify_dots(len_commit_dots))
 
     # Stars (target width after bar 17)
     # | Stars: (9 chars)
     len_star_dots = max(2, 17 - 9 - len(star_val))
-    star_dots = ' ' + ('.' * len_star_dots) + ' ' if len_star_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_star_dots]
-    find_and_replace(root, 'star_data_dots', star_dots)
+    find_and_replace(root, 'star_data_dots', get_justify_dots(len_star_dots))
 
-    # Followers (align with stars)
+    actual_star_len = 9 + len_star_dots + len(star_val)
+
+    # Followers (align with stars on the right)
     # | Followers: (13 chars)
-    len_follower_dots = max(2, 17 - 13 - len(follower_val))
-    follower_dots = ' ' + ('.' * len_follower_dots) + ' ' if len_follower_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_follower_dots]
-    find_and_replace(root, 'follower_data_dots', follower_dots)
+    len_follower_dots = max(2, actual_star_len - 13 - len(follower_val))
+    find_and_replace(root, 'follower_data_dots', get_justify_dots(len_follower_dots))
 
     # Lines of Code (nice spacing)
     len_loc_dots = max(4, 11 - len(loc_val))
-    loc_dots = ' ' + ('.' * len_loc_dots) + ' ' if len_loc_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_loc_dots]
-    find_and_replace(root, 'loc_data_dots', loc_dots)
+    find_and_replace(root, 'loc_data_dots', get_justify_dots(len_loc_dots))
 
     # Deletions spacing
     len_loc_del_dots = max(2, 7 - len(loc_del_val))
-    loc_del_dots = ' ' + ('.' * len_loc_del_dots) + ' ' if len_loc_del_dots > 2 else {0: '', 1: ' ', 2: '. '}[len_loc_del_dots]
-    find_and_replace(root, 'loc_del_dots', loc_del_dots)
+    find_and_replace(root, 'loc_del_dots', get_justify_dots(len_loc_del_dots))
 
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
