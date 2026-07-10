@@ -32,6 +32,8 @@ jobs:
           USER_NAME: ${{ secrets.USER_NAME }}
         run: python today.py
       - name: Commit
+        env:
+          TZ: Asia/Jakarta
         run: |-
           git add .
           git diff
