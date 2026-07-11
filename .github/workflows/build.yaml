@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "10 17 * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -41,7 +41,10 @@ jobs:
       - name: Render info card
         run: python scripts/make_info_card.py
 
+      - name: Update weather
+        run: python scripts/update_weather.py
+
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: refresh profile art [skip ci]"
-          file_pattern: "data/ dycandx-ascii.svg info-card.svg contrib-heatmap.svg"
+          file_pattern: "README.md data/ dycandx-ascii.svg info-card.svg contrib-heatmap.svg"

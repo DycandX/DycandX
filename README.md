@@ -17,6 +17,10 @@
 
 <br>
 
+<!-- WEATHER_START -->
+<span>📍 <b>Semarang, ID:</b> ✨ +22°C Smoky haze</span>
+<!-- WEATHER_END -->
+
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
 
 </div>
