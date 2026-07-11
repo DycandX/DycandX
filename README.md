@@ -17,9 +17,9 @@
 
 <br>
 
-<!-- WEATHER_START -->
-<span>📍 <b>Semarang, ID:</b> ✨ +22°C Smoky haze</span>
-<!-- WEATHER_END -->
+<!-- QUOTE_START -->
+<p align="center"><i>"Success is a consequence and must not be a goal."</i> — <b>Gustave Flaubert</b></p>
+<!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
 

@@ -41,8 +41,8 @@ jobs:
       - name: Render info card
         run: python scripts/make_info_card.py
 
-      - name: Update weather
-        run: python scripts/update_weather.py
+      - name: Update quote
+        run: python scripts/update_quote.py
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
