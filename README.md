@@ -2,8 +2,8 @@
 
 <table>
 <tr>
-<td valign="top"><img src="./dycandx-ascii.svg" width="370" alt="DycandX — ASCII portrait" /></td>
-<td valign="top"><img src="./info-card.svg" width="414" alt="DycandX — profile info" /></td>
+<td valign="top"><img src="./dycandx-ascii.svg" width="379" height="548" alt="DycandX — ASCII portrait" /></td>
+<td valign="top"><img src="./info-card.svg" width="405" height="548" alt="DycandX — profile info" /></td>
 </tr>
 </table>
 

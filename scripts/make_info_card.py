@@ -7,15 +7,15 @@ STATS_PATH = os.path.join(HERE, "..", "data", "stats.json")
 OUT = os.path.join(HERE, "..", "info-card.svg")
 STATIC = bool(os.environ.get("STATIC"))
 
-W, H = 480, 620
+W, H = 480, 650
 PAD = 20
 TITLEBAR_H = 30
 KEY_X = PAD
 VAL_X = 180
 LINE_H = 20.5
 
-BG = "#0d1117"
-BG2 = "#111722"
+BG = "#161b22"
+BG2 = "#161b22"
 FRAME = "#30363d"
 MUTED = "#7d8590"
 INK = "#c9d1d9"
@@ -54,6 +54,8 @@ ROWS = [
     ("kv", "Repos",     None, "repos_stats"),
     ("kv", "Commits",   None, "commits_stats"),
     ("loc",),
+    ("gap",),
+    ("colors",),
 ]
 
 DEFAULTS = {
@@ -116,10 +118,8 @@ for key, val in DEFAULTS.items():
 parts = [
     f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
     f'font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">',
-    '<defs>'
-    f'<linearGradient id="ibg" x1="0" y1="0" x2="0" y2="1">'
-    f'<stop offset="0" stop-color="{BG2}"/><stop offset="1" stop-color="{BG}"/></linearGradient></defs>',
-    f'<rect width="{W}" height="{H}" rx="12" fill="url(#ibg)"/>',
+    f'<rect width="{W}" height="{H}" rx="12" fill="#161b22"/>',
+    f'<path d="M 0,{TITLEBAR_H} L {W},{TITLEBAR_H} L {W},{H-12} A 12,12 0 0 1 {W-12},{H} L 12,{H} A 12,12 0 0 1 0,{H-12} Z" fill="#000000"/>',
     f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="12" fill="none" stroke="{FRAME}"/>',
     f'<line x1="0" y1="{TITLEBAR_H}" x2="{W}" y2="{TITLEBAR_H}" stroke="{FRAME}"/>',
 ]
@@ -168,6 +168,18 @@ for i, row in enumerate(ROWS):
                  f'<tspan fill="{DEL}">  {loc_d}--</tspan>'
                  f'<tspan fill="{INK}">)</tspan>'
                  f'</text>')
+    elif kind == "colors":
+        w, h = 32, 16
+        gap_x = 8
+        gap_y = 6
+        normal_colors = ["#21262d", "#f85149", "#3fb950", "#d29922", "#58a6ff", "#bc8cff", "#39c5cf", "#b1bac4"]
+        bright_colors = ["#484f58", "#ff7b72", "#56d364", "#f2cc60", "#79c0ff", "#d3b6ff", "#56e3ee", "#ffffff"]
+        rects = []
+        for col_idx, col in enumerate(normal_colors):
+            rects.append(f'<rect x="{KEY_X + col_idx * (w + gap_x)}" y="{y:.1f}" width="{w}" height="{h}" fill="{col}"/>')
+        for col_idx, col in enumerate(bright_colors):
+            rects.append(f'<rect x="{KEY_X + col_idx * (w + gap_x)}" y="{y + h + gap_y:.1f}" width="{w}" height="{h}" fill="{col}"/>')
+        inner = "".join(rects)
     else:
         continue
     parts.append(rise(inner, i))
