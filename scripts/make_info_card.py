@@ -11,7 +11,7 @@ W, H = 480, 620
 PAD = 20
 TITLEBAR_H = 30
 KEY_X = PAD
-VAL_X = PAD + 200
+VAL_X = PAD + 160
 LINE_H = 20.5
 
 BG = "#0d1117"
@@ -151,7 +151,7 @@ for i, row in enumerate(ROWS):
         val_key = row[3]
         val_text = esc(stats.get(val_key, ""))
         inner = (f'<text x="{KEY_X}" y="{y:.1f}" fill="{KEY}" font-size="12.5" font-weight="700">{key_text}</text>'
-                 f'<text x="{VAL_X}" y="{y:.1f}" fill="{INK}" font-size="12.5">{val_text}</text>')
+                 f'<text x="{VAL_X}" y="{y:.1f}" fill="{INK}" font-size="11">{val_text}</text>')
     elif kind == "bul":
         txt = esc(row[1])
         inner = (f'<circle cx="{KEY_X+3}" cy="{y-4:.1f}" r="2.5" fill="{GREEN}"/>'
@@ -161,7 +161,7 @@ for i, row in enumerate(ROWS):
         loc_a = esc(stats.get("loc_a", "?"))
         loc_d = esc(stats.get("loc_d", "?"))
         inner = (f'<text x="{KEY_X}" y="{y:.1f}" fill="{KEY}" font-size="12.5" font-weight="700">Line of Code</text>'
-                 f'<text x="{VAL_X}" y="{y:.1f}" font-size="12.5">'
+                 f'<text x="{VAL_X}" y="{y:.1f}" font-size="11">'
                  f'<tspan fill="{INK}">{loc_t}</tspan>'
                  f'<tspan fill="{GREEN}">  ({loc_a}++</tspan>'
                  f'<tspan fill="{INK}">,</tspan>'
