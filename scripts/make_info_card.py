@@ -7,11 +7,11 @@ STATS_PATH = os.path.join(HERE, "..", "data", "stats.json")
 OUT = os.path.join(HERE, "..", "info-card.svg")
 STATIC = bool(os.environ.get("STATIC"))
 
-W, H = 480, 600
+W, H = 480, 620
 PAD = 20
 TITLEBAR_H = 30
 KEY_X = PAD
-VAL_X = PAD + 110
+VAL_X = PAD + 200
 LINE_H = 20.5
 
 BG = "#0d1117"
@@ -22,6 +22,7 @@ INK = "#c9d1d9"
 KEY = "#ffa657"
 SECTION = "#58a6ff"
 GREEN = "#3fb950"
+DEL = "#f85149"
 ACCENT = "#22d3ee"
 
 ROWS = [
@@ -34,23 +35,25 @@ ROWS = [
     ("kv", "EDU",       None, "edu"),
     ("gap",),
     ("sec", "Languages"),
-    ("kv", "Programming", None, "languages_programming"),
-    ("kv", "Real",        None, "languages_real"),
+    ("kv", "Languages.Programming", None, "languages_programming"),
+    ("kv", "Languages.Real",       None, "languages_real"),
     ("gap",),
     ("sec", "Hobbies"),
-    ("kv", "Software",  None, "hobbies_software"),
-    ("kv", "Life",      None, "hobbies_life"),
+    ("kv", "Hobbies.Software", None, "hobbies_software"),
+    ("kv", "Hobbies.Life",     None, "hobbies_life"),
     ("gap",),
     ("sec", "Contact"),
-    ("kv", "Portfolio", None, "portfolio"),
-    ("kv", "Email",     None, "email"),
-    ("kv", "LinkedIn",  None, "linkedin"),
-    ("kv", "Discord",   None, "discord"),
+    ("kv", "Timezone",       None, "timezone"),
+    ("kv", "Email.Personal", None, "email"),
+    ("kv", "Portfolio",      None, "portfolio"),
+    ("kv", "LinkedIn",       None, "linkedin"),
+    ("kv", "TikTok",         None, "tiktok"),
+    ("kv", "Discord",        None, "discord"),
     ("gap",),
     ("sec", "GitHub Stats"),
     ("kv", "Repos",     None, "repos_stats"),
     ("kv", "Commits",   None, "commits_stats"),
-    ("kv", "LOC",       None, "loc_stats"),
+    ("loc",),
 ]
 
 DEFAULTS = {
@@ -64,9 +67,11 @@ DEFAULTS = {
     "languages_real": "English, Indonesian",
     "hobbies_software": "AI Project, Web Dev, Discord Bot",
     "hobbies_life": "Powerlifting, Gaming, Coffee",
-    "portfolio": "zulvikar.is-a.dev/",
+    "timezone": "Asia/Jakarta (WIB)",
+    "portfolio": "zulvikar.is-a.dev",
     "email": "zulvikar.kharisma22@gmail.com",
     "linkedin": "in/zulvikar-kharisma",
+    "tiktok": "@sleepyinsomniacc_",
     "discord": "dycandx",
 }
 
@@ -98,10 +103,9 @@ if os.path.exists(STATS_PATH):
             commit_v = loaded.get("commits", "?")
             follower_v = loaded.get("followers", "?")
             stats["commits_stats"] = f"{commit_v}  |  Followers: {follower_v}"
-            loc_t = loaded.get("loc_total", "?")
-            loc_a = loaded.get("loc_add", "?")
-            loc_d = loaded.get("loc_del", "?")
-            stats["loc_stats"] = f"{loc_t}  (+{loc_a}  -{loc_d})"
+            stats["loc_t"] = loaded.get("loc_total", "?")
+            stats["loc_a"] = loaded.get("loc_add", "?")
+            stats["loc_d"] = loaded.get("loc_del", "?")
     except Exception:
         pass
 
@@ -152,6 +156,17 @@ for i, row in enumerate(ROWS):
         txt = esc(row[1])
         inner = (f'<circle cx="{KEY_X+3}" cy="{y-4:.1f}" r="2.5" fill="{GREEN}"/>'
                  f'<text x="{KEY_X+14}" y="{y:.1f}" fill="{INK}" font-size="12.5">{txt}</text>')
+    elif kind == "loc":
+        loc_t = esc(stats.get("loc_t", "?"))
+        loc_a = esc(stats.get("loc_a", "?"))
+        loc_d = esc(stats.get("loc_d", "?"))
+        inner = (f'<text x="{KEY_X}" y="{y:.1f}" fill="{KEY}" font-size="12.5" font-weight="700">Line of Code</text>'
+                 f'<text x="{VAL_X}" y="{y:.1f}" font-size="12.5">'
+                 f'<tspan fill="{INK}">{loc_t}</tspan>'
+                 f'<tspan fill="{GREEN}">  (+{loc_a}++</tspan>'
+                 f'<tspan fill="{DEL}">,  -{loc_d}--</tspan>'
+                 f'<tspan fill="{INK}">)</tspan>'
+                 f'</text>')
     else:
         continue
     parts.append(rise(inner, i))
