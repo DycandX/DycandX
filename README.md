@@ -3,7 +3,7 @@
 <table>
 <tr>
 <td valign="top"><img src="./dycandx-ascii.svg" width="370" alt="DycandX — ASCII portrait" /></td>
-<td valign="top"><img src="./info-card.svg" width="427" alt="DycandX — profile info" /></td>
+<td valign="top"><img src="./info-card.svg" width="381" alt="DycandX — profile info" /></td>
 </tr>
 </table>
 
