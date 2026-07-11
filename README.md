@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Success is a consequence and must not be a goal."</i> — <b>Gustave Flaubert</b></p>
+<p align="center"><i>"Simplicity is the soul of efficiency."</i> — <b>Austin Freeman</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
