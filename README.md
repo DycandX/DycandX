@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Simplicity is the soul of efficiency."</i> — <b>Austin Freeman</b></p>
+<p align="center"><i>"Your conscience is the measure of the honesty of your selfishness. Listen to it carefully."</i> — <b>Richard Bach</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
