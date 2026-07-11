@@ -5,6 +5,7 @@ import os
 from lxml import etree
 import time
 import hashlib
+import json
 
 
 def load_env():
@@ -487,6 +488,36 @@ def justify_format(root, element_id, new_text, length=0):
     find_and_replace(root, f"{element_id}_dots", dot_string)
 
 
+def write_stats_json(age_data, commit_data, star_data, repo_data, contrib_data, follower_data, loc_data):
+    stats = {
+        "age": str(age_data),
+        "os": "Windows 11, Ubuntu",
+        "host": "OMEN 15",
+        "kernel": "Fullstack Dev, Backend, AL/ML",
+        "ide": "VScode, Clion, Arduino IDE",
+        "edu": "Computer Engineering Student @ POLINES",
+        "languages_programming": "Python, JS, TS, C/C++, PHP, Java, SQL",
+        "languages_real": "English, Indonesian",
+        "hobbies_software": "AI Project, Web Dev, Discord Bot",
+        "hobbies_life": "Powerlifting, Gaming, Coffee",
+        "portfolio": "zulvikar.is-a.dev/",
+        "email": "zulvikar.kharisma22@gmail.com",
+        "linkedin": "in/zulvikar-kharisma",
+        "discord": "dycandx",
+        "repos": repo_data,
+        "stars": star_data,
+        "commits": commit_data,
+        "followers": follower_data,
+        "contributions": contrib_data,
+        "loc_add": loc_data[0],
+        "loc_del": loc_data[1],
+        "loc_total": loc_data[2],
+    }
+    os.makedirs("data", exist_ok=True)
+    with open("data/stats.json", "w") as f:
+        json.dump(stats, f, indent=2)
+
+
 def find_and_replace(root, element_id, new_text):
     """
     Finds the element in the SVG file and replaces its text with a new value
@@ -602,10 +633,14 @@ if __name__ == '__main__':
         contrib_data += archived_data[-1]
         commit_data += int(archived_data[-2])
 
-    for index in range(len(total_loc)-1): total_loc[index] = '{:,}'.format(total_loc[index]) # format added, deleted, and total LOC
+    for index in range(len(total_loc)-1): total_loc[index] = '{:,}'.format(total_loc[index])
 
-    svg_overwrite('dark_mode.svg', age_data, commit_data, star_data, repo_data, contrib_data, follower_data, total_loc[:-1])
-    svg_overwrite('light_mode.svg', age_data, commit_data, star_data, repo_data, contrib_data, follower_data, total_loc[:-1])
+    write_stats_json(age_data, commit_data, star_data, repo_data, contrib_data, follower_data, total_loc[:-1])
+
+    if os.path.exists('dark_mode.svg'):
+        svg_overwrite('dark_mode.svg', age_data, commit_data, star_data, repo_data, contrib_data, follower_data, total_loc[:-1])
+    if os.path.exists('light_mode.svg'):
+        svg_overwrite('light_mode.svg', age_data, commit_data, star_data, repo_data, contrib_data, follower_data, total_loc[:-1])
 
     # move cursor to override 'Calculation times:' with 'Total function time:' and the total function time, then move cursor back
     print('\033[F\033[F\033[F\033[F\033[F\033[F\033[F\033[F',
