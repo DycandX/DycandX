@@ -62,7 +62,7 @@ DEFAULTS = {
     "host": "OMEN 15",
     "kernel": "Fullstack Dev, Backend, AL/ML",
     "ide": "VScode, Clion, Arduino IDE",
-    "edu": "Computer Engineering Student @ POLINES",
+    "edu": "Computer Engineering @ POLINES",
     "languages_programming": "Python, JS, TS, C/C++, PHP, Java, SQL",
     "languages_real": "English, Indonesian",
     "hobbies_software": "AI Project, Web Dev, Discord Bot",
@@ -138,7 +138,7 @@ for i, row in enumerate(ROWS):
         inner = (f'<text x="{KEY_X}" y="{y:.1f}" font-size="14" font-weight="700">'
                  f'<tspan fill="{GREEN}">zulvikar</tspan><tspan fill="{MUTED}">@</tspan>'
                  f'<tspan fill="{ACCENT}">is-a.dev</tspan></text>'
-                 f'<line x1="{KEY_X+106}" y1="{y-4:.1f}" x2="{W-PAD}" y2="{y-4:.1f}" '
+                 f'<line x1="{KEY_X+170}" y1="{y-4:.1f}" x2="{W-PAD}" y2="{y-4:.1f}" '
                  f'stroke="{FRAME}" stroke-opacity="0.8"/>')
     elif kind == "sec":
         title = esc(row[1])
@@ -163,8 +163,9 @@ for i, row in enumerate(ROWS):
         inner = (f'<text x="{KEY_X}" y="{y:.1f}" fill="{KEY}" font-size="12.5" font-weight="700">Line of Code</text>'
                  f'<text x="{VAL_X}" y="{y:.1f}" font-size="12.5">'
                  f'<tspan fill="{INK}">{loc_t}</tspan>'
-                 f'<tspan fill="{GREEN}">  (+{loc_a}++</tspan>'
-                 f'<tspan fill="{DEL}">,  -{loc_d}--</tspan>'
+                 f'<tspan fill="{GREEN}">  ({loc_a}++</tspan>'
+                 f'<tspan fill="{INK}">,</tspan>'
+                 f'<tspan fill="{DEL}">  {loc_d}--</tspan>'
                  f'<tspan fill="{INK}">)</tspan>'
                  f'</text>')
     else:
