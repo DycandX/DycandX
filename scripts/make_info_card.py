@@ -10,7 +10,7 @@ STATIC = bool(os.environ.get("STATIC"))
 W, H = 480, 620
 PAD = 20
 TITLEBAR_H = 30
-KEY_X = PAD
+KEY_X = PAD + 20
 VAL_X = PAD + 160
 LINE_H = 20.5
 
