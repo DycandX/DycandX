@@ -7,7 +7,7 @@ STATS_PATH = os.path.join(HERE, "..", "data", "stats.json")
 OUT = os.path.join(HERE, "..", "info-card.svg")
 STATIC = bool(os.environ.get("STATIC"))
 
-W, H = 480, 456
+W, H = 480, 600
 PAD = 20
 TITLEBAR_H = 30
 KEY_X = PAD
