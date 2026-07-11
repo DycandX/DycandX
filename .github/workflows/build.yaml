@@ -49,5 +49,5 @@ jobs:
           commit_message: "chore: refresh profile art [skip ci]"
           file_pattern: "README.md data/ dycandx-ascii.svg info-card.svg contrib-heatmap.svg"
           commit_user_name: DycandX
-          commit_user_email: 103848218+DycandX@users.noreply.github.com
-          commit_author: DycandX <103848218+DycandX@users.noreply.github.com>
+          commit_user_email: karismaviki@gmail.com
+          commit_author: DycandX <karismaviki@gmail.com>
