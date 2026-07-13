@@ -37,7 +37,6 @@ SKILLS = [
     ("C/C++", "#00599C"),
     ("PHP", "#777BB4"),
     ("Java", "#F89820"),
-    ("SQL", "#4169E1"),
     ("MicroPython", "#2599c9"),
     # Frameworks & Libraries
     ("Next.js", "#ffffff"),
@@ -46,53 +45,29 @@ SKILLS = [
     ("Flutter", "#02569B"),
     ("Node.js", "#339933"),
     ("Tailwind CSS", "#38B2AC"),
-    ("Bootstrap", "#7952B3"),
-    # Databases & Systems
-    ("MySQL", "#4479A1"),
-    ("PostgreSQL", "#4169E1"),
-    ("MongoDB", "#47A248"),
-    ("Supabase", "#3ECF8E"),
-    ("Firebase", "#FFCA28"),
-    ("Oracle Database", "#F80000"),
-    # Embedded & IoT
-    ("ESP32", "#E7352C"),
-    ("Arduino", "#00979D"),
-    ("MQTT", "#fbbf24"),
-    ("UDP Sockets", "#fb923c"),
-    ("I2S Audio", "#fbbf24"),
-    ("Sensor Integration", "#a78bfa"),
-    ("PWM Control", "#fb923c"),
-    ("FreeRTOS", "#fbbf24"),
-    ("Robot 2wd", "#a78bfa"),
     # AI & ML
     ("TensorFlow", "#FF6F00"),
     ("Keras", "#D00000"),
     ("OpenCV", "#5C3EE8"),
     ("MediaPipe", "#00f2fe"),
     ("Natural Language Processing (NLP)", "#a78bfa"),
-    ("Data Scraping", "#34d399"),
-    ("Computer Vision", "#a78bfa"),
     ("RAG", "#a78bfa"),
-    ("Prompt Engineering", "#a78bfa"),
-    ("Vector Search", "#a78bfa"),
-    ("pgvector", "#34d399"),
-    ("OpenRouter AI", "#a78bfa"),
+    # Databases & Systems
+    ("PostgreSQL", "#4169E1"),
+    ("MongoDB", "#47A248"),
+    ("Supabase", "#3ECF8E"),
+    ("Firebase", "#FFCA28"),
+    # Embedded & IoT
+    ("ESP32", "#E7352C"),
+    ("Arduino", "#00979D"),
+    ("MQTT", "#fbbf24"),
     # Tools & Platforms
     ("Git", "#F05032"),
     ("GitHub", "#ffffff"),
     ("Vercel", "#ffffff"),
     ("VS Code", "#007ACC"),
     ("Linux", "#FCC624"),
-    ("Postman", "#FF6C37"),
-    ("Google Analytics", "#E37400"),
-    ("Notion", "#ffffff"),
-    ("Miro", "#FFD02F"),
-    # Methodologies
-    ("REST API Development", "#cbd5e1"),
-    ("SDLC", "#cbd5e1"),
-    ("Agile Development", "#cbd5e1"),
-    ("CRISP-DM", "#cbd5e1"),
-    ("Object-Oriented Programming", "#cbd5e1")
+    ("Postman", "#FF6C37")
 ]
 
 def load_paths():
