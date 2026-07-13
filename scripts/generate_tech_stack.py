@@ -129,7 +129,7 @@ def generate_svg():
             # Left accent border
             f'  <rect class="accent-bar" x="{card_x}" y="{card_y}" width="3" height="{card_h}" rx="1.5" fill="{color}"/>',
             # Card Header Title
-            f'  <text class="card-title" x="{card_x + 16}" y="{card_y + 26}">&gt; {title}</text>'
+            f'  <text class="card-title" x="{card_x + 16}" y="{card_y + 26}">&gt; {title.replace("&", "&amp;")}</text>'
         ]
         
         # Render Badges Row-by-Row
@@ -151,7 +151,7 @@ def generate_svg():
                 card_parts.append(
                     f'    <text class="b-text" x="{text_x:.1f}" y="{text_y:.1f}" text-anchor="middle">'
                     f'<tspan class="bracket">[ </tspan>'
-                    f'<tspan class="skill-name">{text}</tspan>'
+                    f'<tspan class="skill-name">{text.replace("&", "&amp;")}</tspan>'
                     f'<tspan class="bracket"> ]</tspan>'
                     f'</text>'
                 )
