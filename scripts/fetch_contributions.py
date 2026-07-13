@@ -123,6 +123,11 @@ if __name__ == "__main__":
     # Sort years descending for JSON structure representation
     years_data.sort(key=lambda x: x["year"], reverse=True)
     
+    # Optimize JSON size: only keep daily counts ('days') for the current and previous year
+    for i, y_data in enumerate(years_data):
+        if i >= 2:
+            y_data.pop("days", None)
+            
     data = {
         "username": USERNAME,
         "generated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
