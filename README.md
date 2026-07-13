@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Your conscience is the measure of the honesty of your selfishness. Listen to it carefully."</i> — <b>Richard Bach</b></p>
+<p align="center"><i>"Everything great that has ever happened to humanity has begun as a single thought in someone's mind."</i> — <b>Yanni</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
