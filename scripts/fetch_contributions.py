@@ -55,9 +55,46 @@ def fetch_year_contributions(year):
         "days": days
     }
 
+def compute_current_streak(days):
+    if not days:
+        return 0, None, None
+    idx = len(days) - 1
+    # If today and yesterday are both 0, streak is 0
+    if days[idx]["count"] == 0:
+        # Check if yesterday had contributions to count active streak
+        if idx > 0 and days[idx-1]["count"] == 0:
+            return 0, None, None
+        idx -= 1
+        
+    streak = 0
+    end_idx = idx
+    while idx >= 0 and days[idx]["count"] > 0:
+        streak += 1
+        idx -= 1
+    start_idx = idx + 1
+    if streak == 0:
+        return 0, None, None
+    return streak, days[start_idx]["date"], days[end_idx]["date"]
+
+def compute_longest_streak(days):
+    longest = run = 0
+    longest_start = longest_end = None
+    run_start_idx = None
+    for i, d in enumerate(days):
+        if d["count"] > 0:
+            if run == 0:
+                run_start_idx = i
+            run += 1
+            if run > longest:
+                longest = run
+                longest_start = days[run_start_idx]["date"]
+                longest_end = days[i]["date"]
+        else:
+            run = 0
+    return longest, longest_start, longest_end
+
 if __name__ == "__main__":
     current_year = datetime.datetime.now().year
-    # DycandX account was created in 2022
     start_year = 2022
     
     years_data = []
@@ -71,13 +108,29 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"Error fetching year {y}: {e}", file=sys.stderr)
             
-    # Sort years in descending order (newest first)
+    # Sort years ascending for chronological processing of streaks
+    years_data.sort(key=lambda x: x["year"])
+    
+    all_days = []
+    for y_data in years_data:
+        all_days.extend(y_data["days"])
+        
+    # Calculate global stats
+    cur_len, cur_start, cur_end = compute_current_streak(all_days)
+    long_len, long_start, long_end = compute_longest_streak(all_days)
+    best = max(all_days, key=lambda d: d["count"]) if all_days else {"date": None, "count": 0}
+    
+    # Sort years descending for JSON structure representation
     years_data.sort(key=lambda x: x["year"], reverse=True)
     
     data = {
         "username": USERNAME,
         "generated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "lifetime_contributions": lifetime_contributions,
+        "range": {"start": all_days[0]["date"] if all_days else None, "end": all_days[-1]["date"] if all_days else None},
+        "current_streak": {"length": cur_len, "start": cur_start, "end": cur_end},
+        "longest_streak": {"length": long_len, "start": long_start, "end": long_end},
+        "best_day": {"date": best["date"], "count": best["count"]},
         "years": years_data
     }
     
@@ -85,4 +138,5 @@ if __name__ == "__main__":
     with open(OUT_PATH, "w") as f:
         json.dump(data, f, indent=2)
         
-    print(f"Successfully wrote {OUT_PATH}: {lifetime_contributions} lifetime contributions across {len(years_data)} years.")
+    print(f"Successfully wrote {OUT_PATH}: {lifetime_contributions} lifetime contributions, "
+          f"current streak {cur_len}, longest streak {long_len}.")

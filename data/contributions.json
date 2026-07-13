@@ -1,7 +1,25 @@
 {
   "username": "DycandX",
-  "generated_at": "2026-07-13T03:50:58Z",
+  "generated_at": "2026-07-13T03:56:33Z",
   "lifetime_contributions": 941,
+  "range": {
+    "start": "2022-01-01",
+    "end": "2026-12-31"
+  },
+  "current_streak": {
+    "length": 0,
+    "start": null,
+    "end": null
+  },
+  "longest_streak": {
+    "length": 11,
+    "start": "2026-06-15",
+    "end": "2026-06-25"
+  },
+  "best_day": {
+    "date": "2026-07-11",
+    "count": 100
+  },
   "years": [
     {
       "year": 2026,
