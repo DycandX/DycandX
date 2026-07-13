@@ -92,8 +92,8 @@ def render(data):
     canvas_w = PAD + LEFT_LABEL_W + art_w + PAD # 875px
     
     # Canvas height:
-    # 30 (terminal titlebar) + 214 (Year 2026) + 140 (Year 2025 + spacing) + 64 (footer) = 448px
-    canvas_h = 448
+    # 30 (terminal titlebar) + 214 (Year 2026) + 140 (Year 2025 + spacing) + 86 (legend + footer) = 470px
+    canvas_h = 470
     
     css = f"""
 @keyframes cell {{
@@ -188,8 +188,8 @@ def render(data):
         current_y += SEC_HEADER_H + MONTHS_ROW_H + GRID_H + YEAR_GAP
         
     # --- LEGEND ---
-    # Render Less/More legend at y = 350
-    leg_y = 350
+    # Render Less/More legend at the bottom of the last year's grid
+    leg_y = current_y - YEAR_GAP + 6
     leg_x = canvas_w - PAD - 152
     parts.append(f'<text x="{leg_x}" y="{leg_y + CELL*0.8:.1f}" fill="{MUTED}" font-size="10" text-anchor="end">Less</text>')
     lx = leg_x + 8
@@ -200,7 +200,7 @@ def render(data):
     
     # --- FOOTER SECTION ---
     # Horizontal Separator
-    sep_y = 376
+    sep_y = leg_y + CELL + 14
     parts.append(f'<line x1="0" y1="{sep_y}" x2="{canvas_w}" y2="{sep_y}" stroke="{FRAME}"/>')
     
     # Stats from data
