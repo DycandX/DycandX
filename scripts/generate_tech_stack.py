@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """
 Generate a beautiful, interactive, and glowing tech stack SVG card.
-Displays all skills categorized in a 3-column masonry grid matching the user's design.
+Displays all skills in a clean, horizontally-centered grid inside a single terminal box.
 """
 import os
+import json
 
-OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "tech-stack.svg")
+DIR_NAME = os.path.dirname(__file__)
+OUT_PATH = os.path.join(DIR_NAME, "..", "tech-stack.svg")
+PATHS_JSON_PATH = os.path.join(DIR_NAME, "paths_data.json")
 
 # Design Constants
 BG = "#0d1117"
@@ -14,74 +17,111 @@ MUTED = "#7d8590"
 TEXT = "#ffffff"
 CARD_BG = "#161b22"
 
-# Columns Layout Configuration
-PAD_X = 24
-PAD_Y = 16
-COL_W = 265
-GAP_X = 16
-GAP_Y = 16
+# Layout Configuration
+PAD_X = 32
+PAD_Y = 24
 TITLEBAR_H = 30
+BADGE_H = 34
+ROW_GAP = 12
+BADGE_GAP = 12
 
-CATEGORIES = [
-    # Column 0
-    {
-        "title": "PROGRAMMING LANGUAGES",
-        "color": "#00f2fe",  # Cyan glow
-        "skills": ["Python", "JavaScript", "TypeScript", "C/C++", "PHP", "Java", "SQL", "MicroPython"],
-        "col": 0
-    },
-    {
-        "title": "DATABASES & SYSTEMS ANALYSIS",
-        "color": "#34d399",  # Turquoise
-        "skills": ["MySQL (Oracle Certified)", "PostgreSQL", "Oracle", "MongoDB", "ERD/DFD Architecture"],
-        "col": 0
-    },
-    {
-        "title": "TOOLS, DEVOPS & DEPLOYMENT",
-        "color": "#22d3ee",  # Teal Cyan
-        "skills": ["Git", "GitHub", "Vercel", "Google Analytics", "Postman API", "VS Code", "Linux OS", "Miro", "Notion", "Supabase"],
-        "col": 0
-    },
-    # Column 1
-    {
-        "title": "WEB & FRAMEWORK TECHNOLOGIES",
-        "color": "#fb923c",  # Orange
-        "skills": ["Next.js", "Laravel", "Flutter", "Node.js", "Tailwind CSS", "Bootstrap"],
-        "col": 1
-    },
-    {
-        "title": "AUTOMATION & CORE PROTOCOLS",
-        "color": "#fbbf24",  # Amber/Yellow
-        "skills": ["ESP32/Arduino Firmware", "MQTT Broker", "UDP Sockets", "I2S Digital Audio", "PWM Control", "FreeRTOS", "Robot 2wd"],
-        "col": 1
-    },
-    # Column 2
-    {
-        "title": "DATA SCIENCE, AI & ANALYTICS",
-        "color": "#a78bfa",  # Violet
-        "skills": ["TensorFlow", "Keras", "OpenCV", "MediaPipe", "Natural Language Processing (NLP)", "Data Scraping"],
-        "col": 2
-    },
-    {
-        "title": "METHODOLOGIES & FRAMEWORKS",
-        "color": "#cbd5e1",  # Slate/Muted Grey
-        "skills": ["CRISP-DM (Data Mining)", "SDLC (Waterfall / Agile Methodologies)"],
-        "col": 2
-    }
+# Fallback/Generic Icon (Code Tag `< >`)
+FALLBACK_PATH = "M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+
+# Skills List (Name, Brand Color)
+SKILLS = [
+    # Programming Languages
+    ("Python", "#3776AB"),
+    ("JavaScript", "#F7DF1E"),
+    ("TypeScript", "#3178C6"),
+    ("C/C++", "#00599C"),
+    ("PHP", "#777BB4"),
+    ("Java", "#F89820"),
+    ("SQL", "#4169E1"),
+    ("MicroPython", "#2599c9"),
+    # Frameworks & Libraries
+    ("Next.js", "#ffffff"),
+    ("React", "#61DAFB"),
+    ("Laravel", "#FF2D20"),
+    ("Flutter", "#02569B"),
+    ("Node.js", "#339933"),
+    ("Tailwind CSS", "#38B2AC"),
+    ("Bootstrap", "#7952B3"),
+    # Databases & Systems
+    ("MySQL", "#4479A1"),
+    ("PostgreSQL", "#4169E1"),
+    ("MongoDB", "#47A248"),
+    ("Supabase", "#3ECF8E"),
+    ("Firebase", "#FFCA28"),
+    ("Oracle Database", "#F80000"),
+    # Embedded & IoT
+    ("ESP32", "#E7352C"),
+    ("Arduino", "#00979D"),
+    ("MQTT", "#fbbf24"),
+    ("UDP Sockets", "#fb923c"),
+    ("I2S Audio", "#fbbf24"),
+    ("Sensor Integration", "#a78bfa"),
+    ("PWM Control", "#fb923c"),
+    ("FreeRTOS", "#fbbf24"),
+    ("Robot 2wd", "#a78bfa"),
+    # AI & ML
+    ("TensorFlow", "#FF6F00"),
+    ("Keras", "#D00000"),
+    ("OpenCV", "#5C3EE8"),
+    ("MediaPipe", "#00f2fe"),
+    ("Natural Language Processing (NLP)", "#a78bfa"),
+    ("Data Scraping", "#34d399"),
+    ("Computer Vision", "#a78bfa"),
+    ("RAG", "#a78bfa"),
+    ("Prompt Engineering", "#a78bfa"),
+    ("Vector Search", "#a78bfa"),
+    ("pgvector", "#34d399"),
+    ("OpenRouter AI", "#a78bfa"),
+    # Tools & Platforms
+    ("Git", "#F05032"),
+    ("GitHub", "#ffffff"),
+    ("Vercel", "#ffffff"),
+    ("VS Code", "#007ACC"),
+    ("Linux", "#FCC624"),
+    ("Postman", "#FF6C37"),
+    ("Google Analytics", "#E37400"),
+    ("Notion", "#ffffff"),
+    ("Miro", "#FFD02F"),
+    # Methodologies
+    ("REST API Development", "#cbd5e1"),
+    ("SDLC", "#cbd5e1"),
+    ("Agile Development", "#cbd5e1"),
+    ("CRISP-DM", "#cbd5e1"),
+    ("Object-Oriented Programming", "#cbd5e1")
 ]
 
-def layout_badges(skills, max_w):
+def load_paths():
+    """
+    Load paths from paths_data.json if exists.
+    """
+    if os.path.exists(PATHS_JSON_PATH):
+        try:
+            with open(PATHS_JSON_PATH, "r") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {}
+
+def layout_badges(skills_data, paths_data, max_w):
     """
     Greedy layout badges into rows.
     """
     rows = [[]]
     current_w = 0
     
-    for skill in skills:
-        # Bracket text: "[ Python ]"
-        display_text = f"[ {skill} ]"
-        # Estimate width using monospaced font width (~5.8px per char) + padding (12px)
-        badge_w = len(display_text) * 5.8 + 12
+    for name, color in skills_data:
+        # Check if we have an authentic icon path
+        path = paths_data.get(name, FALLBACK_PATH)
+        
+        # Estimate width using monospaced font width (~6.0px per char) + padding
+        # Badge layout: 12px padding left + 16px icon + 8px gap + text + 12px padding right
+        # Total badge padding = 48px
+        badge_w = len(name) * 6.0 + 48
         
         # If it doesn't fit the row, wrap to next row
         if current_w + badge_w > max_w and rows[-1]:
@@ -89,156 +129,66 @@ def layout_badges(skills, max_w):
             current_w = 0
             
         rows[-1].append({
-            "text": skill,
+            "name": name,
+            "color": color,
+            "path": path,
             "w": badge_w
         })
-        current_w += badge_w + 8  # 8px gap between badges
+        current_w += badge_w + BADGE_GAP
         
     return rows
 
 def generate_svg():
-    # We will build columns of cards and calculate canvas height dynamically
-    columns_data = {0: [], 1: [], 2: []}
-    columns_y = {0: TITLEBAR_H + PAD_Y, 1: TITLEBAR_H + PAD_Y, 2: TITLEBAR_H + PAD_Y}
-    
-    svg_elements = []
-    
-    for cat in CATEGORIES:
-        col_idx = cat["col"]
-        skills = cat["skills"]
-        color = cat["color"]
-        title = cat["title"]
-        
-        # Badge area width is COL_W - 24 (12px padding left/right)
-        max_badge_area_w = COL_W - 24
-        badge_rows = layout_badges(skills, max_badge_area_w)
-        
-        # Calculate card height dynamically
-        # h = 16(top) + 16(title) + 14(gap) + len(rows)*22 + (len(rows)-1)*8 + 16(bottom)
-        # h = 54 + len(rows)*30
-        card_h = 54 + len(badge_rows) * 30
-        
-        card_x = PAD_X + col_idx * (COL_W + GAP_X)
-        card_y = columns_y[col_idx]
-        
-        # Create Card Group
-        card_parts = [
-            f'<g class="card-group" style="--accent: {color};">',
-            # Card Base
-            f'  <rect class="card-bg" x="{card_x}" y="{card_y}" width="{COL_W}" height="{card_h}" rx="6"/>',
-            # Left accent border
-            f'  <rect class="accent-bar" x="{card_x}" y="{card_y}" width="3" height="{card_h}" rx="1.5" fill="{color}"/>',
-            # Card Header Title
-            f'  <text class="card-title" x="{card_x + 16}" y="{card_y + 26}">&gt; {title.replace("&", "&amp;")}</text>'
-        ]
-        
-        # Render Badges Row-by-Row
-        start_badge_y = card_y + 46
-        for row_idx, row in enumerate(badge_rows):
-            badge_x = card_x + 12
-            badge_y = start_badge_y + row_idx * 30
-            
-            for badge in row:
-                text = badge["text"]
-                w = badge["w"]
-                
-                card_parts.append(f'  <g class="b-group">')
-                # Badge background
-                card_parts.append(f'    <rect class="b-bg" x="{badge_x:.1f}" y="{badge_y:.1f}" width="{w-2:.1f}" height="22" rx="4"/>')
-                # Badge text
-                text_x = badge_x + (w - 2) / 2
-                text_y = badge_y + 15
-                card_parts.append(
-                    f'    <text class="b-text" x="{text_x:.1f}" y="{text_y:.1f}" text-anchor="middle">'
-                    f'<tspan class="bracket">[ </tspan>'
-                    f'<tspan class="skill-name">{text.replace("&", "&amp;")}</tspan>'
-                    f'<tspan class="bracket"> ]</tspan>'
-                    f'</text>'
-                )
-                card_parts.append(f'  </g>')
-                
-                badge_x += w + 8
-                
-        card_parts.append('</g>')
-        svg_elements.append("".join(card_parts))
-        
-        # Advance Y position for this column
-        columns_y[col_idx] += card_h + GAP_Y
-
-    # Total Canvas height is max of columns + extra padding
-    max_y = max(columns_y.values())
+    paths_data = load_paths()
     canvas_w = 875
-    canvas_h = max_y - GAP_Y + PAD_Y + 4  # ~630px to 660px depending on layout
-
-    css = f"""
-    .card-bg {{
-      fill: {CARD_BG};
-      stroke: #21262d;
-      stroke-width: 1;
-      transition: all 0.3s cubic-bezier(.2,.8,.2,1);
-    }}
-    .card-group:hover .card-bg {{
-      stroke: var(--accent);
-      filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.25));
-    }}
-    .accent-bar {{
-      transition: all 0.3s ease;
-    }}
-    .card-group:hover .accent-bar {{
-      filter: drop-shadow(0px 0px 8px var(--accent));
-    }}
-    .card-title {{
-      fill: var(--accent);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-    }}
-    .card-group:hover .card-title {{
-      filter: drop-shadow(0px 0px 4px var(--accent));
-    }}
+    max_badge_area_w = canvas_w - 2 * PAD_X
     
-    /* Badges */
-    .b-bg {{
-      fill: {BG};
-      stroke: #21262d;
-      stroke-width: 1;
-      transition: all 0.2s ease;
+    badge_rows = layout_badges(SKILLS, paths_data, max_badge_area_w)
+    
+    # Calculate canvas height dynamically
+    # canvas_h = 30(titlebar) + 24(top padding) + len(rows)*34 + (len(rows)-1)*12 + 24(bottom padding)
+    canvas_h = TITLEBAR_H + PAD_Y + (len(badge_rows) * BADGE_H) + ((len(badge_rows) - 1) * ROW_GAP) + PAD_Y
+    
+    css = f"""
+    .b {{
+      transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+      stroke: {FRAME};
+      fill: #161b22;
+      cursor: pointer;
     }}
-    .b-group:hover .b-bg {{
+    .b:hover {{
       stroke: var(--accent);
       fill: #1c2735;
-      filter: drop-shadow(0px 0px 4px rgba(34, 211, 238, 0.2));
+      filter: drop-shadow(0px 0px 8px var(--accent));
     }}
-    .b-text {{
-      font-size: 10px;
-      font-weight: 700;
-      transition: all 0.2s ease;
-    }}
-    .bracket {{
+    .icon {{
       fill: {MUTED};
+      transition: all 0.3s ease;
     }}
-    .skill-name {{
-      fill: #e6edf3;
-    }}
-    .b-group:hover .bracket {{
+    .b-group:hover .icon {{
       fill: var(--accent);
+      filter: drop-shadow(0px 0px 4px var(--accent));
     }}
-    .b-group:hover .skill-name {{
+    .text {{
+      fill: {MUTED};
+      font-size: 11px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }}
+    .b-group:hover .text {{
       fill: {TEXT};
     }}
-    """.strip()
-
-    # Final SVG assembly
+    """
+    
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{canvas_w}" height="{canvas_h}" viewBox="0 0 {canvas_w} {canvas_h}" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">',
         f'<style>{css}</style>',
-        # Canvas Background
+        # Background
         f'<rect width="{canvas_w}" height="{canvas_h}" rx="12" fill="{BG}"/>',
         # Outer Border
         f'<rect x="0.5" y="0.5" width="{canvas_w-1}" height="{canvas_h-1}" rx="12" fill="none" stroke="{FRAME}" stroke-width="1"/>',
     ]
-
+    
     # Titlebar Dots
     for i, dotcol in enumerate(["#ff5f56", "#ffbd2e", "#27c93f"]):
         parts.append(f'<circle cx="{PAD_X + i*16}" cy="{TITLEBAR_H/2}" r="5" fill="{dotcol}"/>')
@@ -246,14 +196,46 @@ def generate_svg():
     parts.append(f'<text x="{canvas_w/2}" y="{TITLEBAR_H/2 + 4}" fill="{MUTED}" font-size="12" text-anchor="middle">zulvikar@is-a.dev: ~/skills</text>')
     parts.append(f'<line x1="0" y1="{TITLEBAR_H}" x2="{canvas_w}" y2="{TITLEBAR_H}" stroke="{FRAME}"/>')
     
-    # Add Cards
-    parts.extend(svg_elements)
-    
+    # Render Centered Badges Row-by-Row
+    start_badge_y = TITLEBAR_H + PAD_Y
+    for row_idx, row in enumerate(badge_rows):
+        # Calculate total width of this row to center it
+        row_w = sum(b["w"] for b in row) + (len(row) - 1) * BADGE_GAP
+        badge_x = (canvas_w - row_w) / 2
+        badge_y = start_badge_y + row_idx * (BADGE_H + ROW_GAP)
+        
+        for badge in row:
+            name = badge["name"]
+            color = badge["color"]
+            path = badge["path"]
+            w = badge["w"]
+            
+            parts.append(f'<g class="b-group" style="--accent: {color};">')
+            # Badge background rect
+            parts.append(f'  <rect class="b" x="{badge_x:.1f}" y="{badge_y:.1f}" width="{w:.1f}" height="{BADGE_H}" rx="6"/>')
+            
+            # Icon (placed left-aligned inside the badge)
+            icon_size = 16
+            icon_x = badge_x + 12
+            icon_y = badge_y + (BADGE_H - icon_size) / 2
+            
+            parts.append(f'  <svg x="{icon_x:.1f}" y="{icon_y:.1f}" width="{icon_size}" height="{icon_size}" viewBox="0 0 24 24">')
+            parts.append(f'    <path class="icon" d="{path}"/>')
+            parts.append(f'  </svg>')
+            
+            # Text (placed right of the icon)
+            text_x = badge_x + 12 + icon_size + 8
+            text_y = badge_y + BADGE_H / 2 + 4
+            parts.append(f'  <text class="text" x="{text_x:.1f}" y="{text_y:.1f}">{name.replace("&", "&amp;")}</text>')
+            parts.append(f'</g>')
+            
+            badge_x += w + BADGE_GAP
+            
     parts.append("</svg>")
     
     with open(OUT_PATH, "w") as f:
         f.write("".join(parts))
-    print(f"Successfully generated {OUT_PATH} (width: {canvas_w}, height: {canvas_h})")
+    print(f"Successfully generated {OUT_PATH} (width: {canvas_w}, height: {canvas_h}) with {len(SKILLS)} skills.")
 
 if __name__ == "__main__":
     generate_svg()
