@@ -8,7 +8,7 @@ import json
 
 DIR_NAME = os.path.dirname(__file__)
 OUT_PATH = os.path.join(DIR_NAME, "..", "tech-stack.svg")
-PATHS_JSON_PATH = os.path.join(DIR_NAME, "paths_data.json")
+PATHS_JSON_PATH = os.path.join(DIR_NAME, "..", "data", "paths_data.json")
 
 # Design Constants
 BG = "#0d1117"

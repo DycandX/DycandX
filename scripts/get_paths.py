@@ -51,6 +51,6 @@ for name, slug in SLUGS.items():
     except Exception as e:
         print(f"Error fetching {name}: {e}")
 
-with open("scripts/paths_data.json", "w") as f:
+with open("data/paths_data.json", "w") as f:
     json.dump(paths, f, indent=2)
-print("Done writing scripts/paths_data.json")
+print("Done writing data/paths_data.json")
