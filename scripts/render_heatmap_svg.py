@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
 """
 Render data/contributions.json (produced by fetch_contributions.py) as a proper
-GitHub-style contribution heatmap SVG: a grid of rounded, colored BOXES in the
-classic 53-week x 7-day calendar, revealed once with a diagonal line-after-line
-slide-down (CSS keyframes, plays on load then freezes -- no looping "glow"), a
-Less->More legend, and a real stats footer.
-
-Run by .github/workflows/update-profile-art.yml after fetch_contributions.py.
+GitHub-style contribution heatmap SVG showing two years (current and previous)
+with a clean, modern, dark aesthetic, CSS reveal animations, a Less->More legend,
+and the lifetime contribution count in the header.
 """
 import datetime
 import json
@@ -16,27 +13,28 @@ HERE = os.path.dirname(__file__)
 IN_PATH = os.path.join(HERE, "..", "data", "contributions.json")
 OUT_PATH = os.path.join(HERE, "..", "contrib-heatmap.svg")
 
-# GitHub-ish green ramp: empty -> brightest. Level 5 is a brighter neon top end.
+# GitHub-ish green ramp: empty -> brightest.
 PALETTE = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353", "#69f0a0"]
 
 CELL = 12
 GAP = 3
 STEP = CELL + GAP
-PAD = 22
-LEFT_LABEL_W = 30
-TOP_LABEL_H = 20
-TITLEBAR_H = 30
+PAD = 24
+LEFT_LABEL_W = 32
+TITLEBAR_H = 64
+SEP_H = 1
+SEC_HEADER_H = 24
+MONTHS_ROW_H = 16
+GRID_H = 7 * STEP # 105px
+YEAR_GAP = 36
 
-BG = "#161b22"
-BG2 = "#161b22"
+BG = "#0d1117"
 FRAME = "#30363d"
 MUTED = "#7d8590"
-TEXT = "#e6edf3"
-ACCENT = "#22d3ee"
+TEXT = "#ffffff"
 GREEN = "#39d353"
-GOLD = "#f2cc60"
 
-# reveal timing (one-shot)
+# reveal timing (one-shot sweep)
 COL_T = 0.018   # per-column delay contribution (left -> right sweep)
 ROW_T = 0.045   # per-row delay contribution (top -> bottom cascade)
 CELL_DUR = 0.42
@@ -56,12 +54,16 @@ def level_for(count):
     return 5
 
 
-def build_grid(days):
-    first = datetime.date.fromisoformat(days[0]["date"])
-    lead_pad = (first.weekday() + 1) % 7  # sunday=0
+def build_year_grid(year_days):
+    if not year_days:
+        return []
+        
+    first = datetime.date.fromisoformat(year_days[0]["date"])
+    lead_pad = (first.weekday() + 1) % 7  # Sunday=0
+    
     grid = []
     col = [None] * lead_pad
-    for d in days:
+    for d in year_days:
         date = datetime.date.fromisoformat(d["date"])
         weekday = (date.weekday() + 1) % 7
         while len(col) < weekday:
@@ -78,29 +80,25 @@ def build_grid(days):
 
 
 def render(data):
-    days = data["days"]
-    grid = build_grid(days)
-    n_cols = len(grid)
+    lifetime_contributions = data.get("lifetime_contributions", 0)
+    years_list = data.get("years", [])
+    
+    # We display 2 years: current year and the previous year
+    # Since the years are sorted descending, years_list[0] is current, years_list[1] is previous
+    years_to_render = []
+    if len(years_list) >= 1:
+        years_to_render.append(years_list[0])
+    if len(years_list) >= 2:
+        years_to_render.append(years_list[1])
+        
+    n_cols = 53
     art_w = n_cols * STEP
-    art_h = 7 * STEP
-
-    month_labels = []
-    seen_months = set()
-    for ci, column in enumerate(grid):
-        for cell in column:
-            if cell is None:
-                continue
-            date = datetime.date.fromisoformat(cell[0])
-            key = (date.year, date.month)
-            if key not in seen_months and date.day <= 7:
-                seen_months.add(key)
-                month_labels.append((ci, date.strftime("%b")))
-            break
-
-    canvas_w = PAD + LEFT_LABEL_W + art_w + PAD
-    stats_h = 88
-    canvas_h = TITLEBAR_H + TOP_LABEL_H + art_h + stats_h + PAD
-
+    canvas_w = PAD + LEFT_LABEL_W + art_w + PAD # 24 + 32 + 795 + 24 = 875px
+    
+    # Calculate height dynamically based on rendered years
+    num_years = len(years_to_render)
+    canvas_h = TITLEBAR_H + SEP_H + (num_years * (SEC_HEADER_H + MONTHS_ROW_H + GRID_H)) + ((num_years - 1) * YEAR_GAP) + (PAD * 2)
+    
     css = f"""
 @keyframes cell {{
   0%   {{ opacity: 0; transform: translateY(-6px); }}
@@ -113,85 +111,106 @@ def render(data):
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{canvas_w}" height="{canvas_h}" '
         f'viewBox="0 0 {canvas_w} {canvas_h}" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">',
         f'<style>{css}</style>',
-        f'<rect width="{canvas_w}" height="{canvas_h}" rx="12" fill="#161b22"/>',
-        f'<path d="M 0,{TITLEBAR_H} L {canvas_w},{TITLEBAR_H} L {canvas_w},{canvas_h-12} A 12,12 0 0 1 {canvas_w-12},{canvas_h} L 12,{canvas_h} A 12,12 0 0 1 0,{canvas_h-12} Z" fill="#000000"/>',
+        # Background
+        f'<rect width="{canvas_w}" height="{canvas_h}" rx="12" fill="{BG}"/>',
+        # Outer Border
         f'<rect x="0.5" y="0.5" width="{canvas_w-1}" height="{canvas_h-1}" rx="12" '
         f'fill="none" stroke="{FRAME}" stroke-width="1"/>',
-        f'<line x1="0" y1="{TITLEBAR_H}" x2="{canvas_w}" y2="{TITLEBAR_H}" stroke="{FRAME}"/>',
     ]
-    for i, dotcol in enumerate(["#ff5f56", "#ffbd2e", "#27c93f"]):
-        parts.append(f'<circle cx="{PAD + i*16}" cy="{TITLEBAR_H/2}" r="5" fill="{dotcol}"/>')
-    parts.append(f'<text x="{canvas_w/2}" y="{TITLEBAR_H/2 + 4}" fill="{MUTED}" font-size="12" '
-                 f'text-anchor="middle">zulvikar@is-a.dev: ~/contributions --graph</text>')
-
-    grid_top = TITLEBAR_H + TOP_LABEL_H
-    grid_left = PAD + LEFT_LABEL_W
-
-    for ci, label in month_labels:
-        x = grid_left + ci * STEP
-        parts.append(f'<text x="{x}" y="{TITLEBAR_H + 14}" fill="{MUTED}" font-size="10">{label}</text>')
-
-    for wi, wname in [(1, "Mon"), (3, "Wed"), (5, "Fri")]:
-        y = grid_top + wi * STEP + CELL * 0.78
-        parts.append(f'<text x="{PAD}" y="{y:.1f}" fill="{MUTED}" font-size="9">{wname}</text>')
-
-    # the boxes -- each a rounded rect, diagonal slide-down reveal (once, freeze)
-    for ci, column in enumerate(grid):
-        gx = grid_left + ci * STEP
-        for ri, cell in enumerate(column):
-            if cell is None:
-                continue
-            date_s, count, lvl = cell
-            gy = grid_top + ri * STEP
-            delay = ci * COL_T + ri * ROW_T
-            plural = "s" if count != 1 else ""
-            parts.append(
-                f'<rect class="c" x="{gx}" y="{gy}" width="{CELL}" height="{CELL}" rx="2.5" '
-                f'fill="{PALETTE[lvl]}" style="animation-delay:{delay:.3f}s">'
-                f'<title>{date_s}: {count} contribution{plural}</title></rect>'
-            )
-
-    # legend: Less [][][][][] More (bottom-right of the grid)
-    leg_y = grid_top + art_h + 6
-    leg_x = canvas_w - PAD - (len(PALETTE) * (CELL - 1) + 70)
-    parts.append(f'<text x="{leg_x}" y="{leg_y + CELL*0.8:.1f}" fill="{MUTED}" font-size="10" text-anchor="end">Less</text>')
+    
+    # --- HEADER SECTION ---
+    # Title on the left
+    parts.append(f'<text x="{PAD}" y="32" fill="{TEXT}" font-size="16" font-weight="700">GitHub Contribution Heatmap</text>')
+    # Subtitle with highlighted lifetime contributions
+    parts.append(f'<text x="{PAD}" y="50" fill="{MUTED}" font-size="11" font-weight="700">'
+                 f'LIFETIME: <tspan fill="{GREEN}">{lifetime_contributions:,}</tspan> CONTRIBUTIONS'
+                 f'</text>')
+                 
+    # Legend on the right (top-aligned with the title)
+    leg_x = canvas_w - PAD - 152
+    parts.append(f'<text x="{leg_x}" y="31" fill="{MUTED}" font-size="10" text-anchor="end">Less</text>')
     lx = leg_x + 8
-    for lvl, color in enumerate(PALETTE):
-        parts.append(f'<rect x="{lx}" y="{leg_y}" width="{CELL-1}" height="{CELL-1}" rx="2.2" fill="{color}"/>')
-        lx += CELL
-    parts.append(f'<text x="{lx + 4}" y="{leg_y + CELL*0.8:.1f}" fill="{MUTED}" font-size="10">More</text>')
-
-    sep_y = leg_y + CELL + 14
-    parts.append(f'<line x1="0" y1="{sep_y}" x2="{canvas_w}" y2="{sep_y}" stroke="{FRAME}"/>')
-
-    cs = data["current_streak"]["length"]
-    ls = data["longest_streak"]["length"]
-    total = data["total_contributions"]
-    best = data["best_day"]
-    rng = data["range"]
-
-    ly = sep_y + 24
-    # left column: big highlighted numbers; right column: context in muted
-    parts.append(f'<text x="{PAD}" y="{ly}" font-size="13" fill="{GREEN}">'
-                 f'<tspan font-weight="700">{total:,}</tspan>'
-                 f'<tspan fill="{MUTED}"> contributions in the last year</tspan></text>')
-    parts.append(f'<text x="{canvas_w - PAD}" y="{ly}" font-size="12" fill="{MUTED}" text-anchor="end">'
-                 f'{rng["start"]} &#8594; {rng["end"]}</text>')
-    ly += 24
-    parts.append(f'<text x="{PAD}" y="{ly}" font-size="13" fill="{MUTED}">current streak '
-                 f'<tspan fill="{ACCENT}" font-weight="700">{cs} days</tspan>'
-                 f'<tspan fill="{MUTED}">   &#183;   longest </tspan>'
-                 f'<tspan fill="{ACCENT}" font-weight="700">{ls} days</tspan></text>')
-    parts.append(f'<text x="{canvas_w - PAD}" y="{ly}" font-size="12" fill="{MUTED}" text-anchor="end">'
-                 f'best day <tspan fill="{GOLD}" font-weight="700">{best["count"]}</tspan> on {best["date"]}</text>')
-
+    for color in PALETTE:
+        parts.append(f'<rect x="{lx}" y="20" width="{CELL-1}" height="{CELL-1}" rx="2.2" fill="{color}"/>')
+        lx += CELL + 1
+    parts.append(f'<text x="{lx + 6}" y="31" fill="{MUTED}" font-size="10">More</text>')
+    
+    # Horizontal Separator
+    parts.append(f'<line x1="0" y1="{TITLEBAR_H}" x2="{canvas_w}" y2="{TITLEBAR_H}" stroke="{FRAME}"/>')
+    
+    # --- RENDER EACH YEAR ---
+    grid_left = PAD + LEFT_LABEL_W
+    current_y = TITLEBAR_H + PAD
+    
+    for idx, year_data in enumerate(years_to_render):
+        year = year_data["year"]
+        total = year_data["total"]
+        days = year_data["days"]
+        
+        # Build grid and limit columns to 53
+        grid = build_year_grid(days)[:53]
+        
+        # Render Year Header (e.g., "533 contributions in 2026")
+        parts.append(f'<text x="{PAD}" y="{current_y + 12}" fill="{TEXT}" font-size="13" font-weight="700">'
+                     f'{total:,} contributions in {year}</text>')
+        parts.append(f'<text x="{canvas_w - PAD}" y="{current_y + 12}" fill="{MUTED}" font-size="11" text-anchor="end">'
+                     f'Jan - Dec</text>')
+                     
+        # Find month labels positions
+        month_labels = []
+        seen_months = set()
+        for ci, column in enumerate(grid):
+            for cell in column:
+                if cell is None:
+                    continue
+                date = datetime.date.fromisoformat(cell[0])
+                key = (date.year, date.month)
+                if key not in seen_months and date.day <= 7:
+                    seen_months.add(key)
+                    month_labels.append((ci, date.strftime("%b")))
+                break
+                
+        # Render Month Labels
+        y_months = current_y + SEC_HEADER_H + 12
+        for ci, label in month_labels:
+            x = grid_left + ci * STEP
+            parts.append(f'<text x="{x}" y="{y_months}" fill="{MUTED}" font-size="9">{label}</text>')
+            
+        # Render Weekdays Labels on the left
+        grid_top = current_y + SEC_HEADER_H + MONTHS_ROW_H
+        for wi, wname in [(1, "Mon"), (3, "Wed"), (5, "Fri")]:
+            y = grid_top + wi * STEP + CELL * 0.78
+            parts.append(f'<text x="{PAD}" y="{y:.1f}" fill="{MUTED}" font-size="9">{wname}</text>')
+            
+        # Render Grid Cells
+        for ci, column in enumerate(grid):
+            gx = grid_left + ci * STEP
+            for ri, cell in enumerate(column):
+                if cell is None:
+                    continue
+                date_s, count, lvl = cell
+                gy = grid_top + ri * STEP
+                delay = ci * COL_T + ri * ROW_T
+                plural = "s" if count != 1 else ""
+                parts.append(
+                    f'<rect class="c" x="{gx}" y="{gy}" width="{CELL}" height="{CELL}" rx="2.5" '
+                    f'fill="{PALETTE[lvl]}" style="animation-delay:{delay:.3f}s">'
+                    f'<title>{date_s}: {count} contribution{plural}</title></rect>'
+                )
+                
+        # Advance Y position for the next year
+        current_y += SEC_HEADER_H + MONTHS_ROW_H + GRID_H + YEAR_GAP
+        
     parts.append("</svg>")
     return "".join(parts)
 
 
 if __name__ == "__main__":
-    data = json.load(open(IN_PATH))
-    svg = render(data)
-    with open(OUT_PATH, "w") as f:
-        f.write(svg)
-    print(f"wrote {OUT_PATH} ({len(svg)} bytes)")
+    if os.path.exists(IN_PATH):
+        data = json.load(open(IN_PATH))
+        svg = render(data)
+        with open(OUT_PATH, "w") as f:
+            f.write(svg)
+        print(f"Successfully rendered {OUT_PATH} ({len(svg)} bytes) with multi-year layout.")
+    else:
+        print(f"Error: {IN_PATH} not found.", file=sys.stderr)

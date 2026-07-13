@@ -8,18 +8,27 @@ import requests
 from bs4 import BeautifulSoup
 
 USERNAME = os.environ.get("GH_PROFILE_USER", "DycandX")
-URL = f"https://github.com/users/{USERNAME}/contributions"
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "contributions.json")
 
-
-def fetch_days():
-    resp = requests.get(URL, headers={"User-Agent": "profile-readme-bot/1.0"}, timeout=30)
+def fetch_year_contributions(year):
+    url = f"https://github.com/users/{USERNAME}/contributions?from={year}-01-01&to={year}-12-31"
+    print(f"Fetching contributions for {year}...", file=sys.stderr)
+    resp = requests.get(url, headers={"User-Agent": "profile-readme-bot/1.0"}, timeout=30)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
     cells = soup.select("td.ContributionCalendar-day")
-    if not cells:
-        print("no calendar cells found", file=sys.stderr)
-        sys.exit(1)
+    
+    h2_text = ""
+    h2_el = soup.select_one("h2")
+    if h2_el:
+        h2_text = h2_el.get_text(strip=True)
+    
+    year_total = 0
+    if h2_text:
+        m = re.search(r"([\d,]+)\s+contribution", h2_text)
+        if m:
+            year_total = int(m.group(1).replace(",", ""))
+            
     days = []
     for td in cells:
         date = td.get("data-date")
@@ -35,74 +44,45 @@ def fetch_days():
             count = int(m.group(1)) if m else 0
         days.append({"date": date, "count": count})
     days.sort(key=lambda d: d["date"])
-    return days
-
-
-def compute_current_streak(days):
-    idx = len(days) - 1
-    if days[idx]["count"] == 0:
-        idx -= 1
-    streak = 0
-    end_idx = idx
-    while idx >= 0 and days[idx]["count"] > 0:
-        streak += 1
-        idx -= 1
-    start_idx = idx + 1
-    if streak == 0:
-        return 0, None, None
-    return streak, days[start_idx]["date"], days[end_idx]["date"]
-
-
-def compute_longest_streak(days):
-    longest = run = 0
-    longest_start = longest_end = None
-    run_start_idx = None
-    for i, d in enumerate(days):
-        if d["count"] > 0:
-            if run == 0:
-                run_start_idx = i
-            run += 1
-            if run > longest:
-                longest = run
-                longest_start = days[run_start_idx]["date"]
-                longest_end = days[i]["date"]
-        else:
-            run = 0
-    return longest, longest_start, longest_end
-
-
-def build_data(days):
-    total = sum(d["count"] for d in days)
-    active_days = sum(1 for d in days if d["count"] > 0)
-    best = max(days, key=lambda d: d["count"])
-    cur_len, cur_start, cur_end = compute_current_streak(days)
-    long_len, long_start, long_end = compute_longest_streak(days)
-    monthly = {}
-    for d in days:
-        key = d["date"][:7]
-        monthly[key] = monthly.get(key, 0) + d["count"]
-    monthly_list = [{"month": k, "total": v} for k, v in sorted(monthly.items())]
+    
+    calculated_total = sum(d["count"] for d in days)
+    if year_total == 0:
+        year_total = calculated_total
+        
     return {
-        "username": USERNAME,
-        "generated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "range": {"start": days[0]["date"], "end": days[-1]["date"]},
-        "total_contributions": total,
-        "active_days": active_days,
-        "avg_per_active_day": round(total / active_days, 1) if active_days else 0,
-        "current_streak": {"length": cur_len, "start": cur_start, "end": cur_end},
-        "longest_streak": {"length": long_len, "start": long_start, "end": long_end},
-        "best_day": {"date": best["date"], "count": best["count"]},
-        "monthly": monthly_list,
-        "days": days,
+        "year": year,
+        "total": year_total,
+        "days": days
     }
 
-
 if __name__ == "__main__":
-    days = fetch_days()
-    data = build_data(days)
+    current_year = datetime.datetime.now().year
+    # DycandX account was created in 2022
+    start_year = 2022
+    
+    years_data = []
+    lifetime_contributions = 0
+    
+    for y in range(start_year, current_year + 1):
+        try:
+            y_data = fetch_year_contributions(y)
+            years_data.append(y_data)
+            lifetime_contributions += y_data["total"]
+        except Exception as e:
+            print(f"Error fetching year {y}: {e}", file=sys.stderr)
+            
+    # Sort years in descending order (newest first)
+    years_data.sort(key=lambda x: x["year"], reverse=True)
+    
+    data = {
+        "username": USERNAME,
+        "generated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "lifetime_contributions": lifetime_contributions,
+        "years": years_data
+    }
+    
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w") as f:
         json.dump(data, f, indent=2)
-    print(f"wrote {OUT_PATH}: {data['total_contributions']} contributions, "
-          f"current streak {data['current_streak']['length']}, "
-          f"longest streak {data['longest_streak']['length']}")
+        
+    print(f"Successfully wrote {OUT_PATH}: {lifetime_contributions} lifetime contributions across {len(years_data)} years.")
