@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Everything great that has ever happened to humanity has begun as a single thought in someone's mind."</i> — <b>Yanni</b></p>
+<p align="center"><i>"When there is nothing to do, do nothing."</i> — <b>Warren Buffett</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
