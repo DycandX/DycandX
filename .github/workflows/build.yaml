@@ -41,13 +41,22 @@ jobs:
       - name: Render info card
         run: python scripts/make_info_card.py
 
+      - name: Render skills card
+        run: python scripts/generate_tech_stack.py
+
       - name: Update quote
         run: python scripts/update_quote.py
+
+      - name: Generate 3D contribution graph
+        uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: refresh profile art [skip ci]"
-          file_pattern: "README.md data/ dycandx-ascii.svg info-card.svg contrib-heatmap.svg"
+          file_pattern: "README.md data/ dycandx-ascii.svg info-card.svg contrib-heatmap.svg tech-stack.svg profile-3d-contrib/"
           commit_user_name: DycandX
           commit_user_email: karismaviki@gmail.com
           commit_author: DycandX <karismaviki@gmail.com>

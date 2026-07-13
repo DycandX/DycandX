@@ -23,4 +23,12 @@
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
 
+<br><br>
+
+<img src="./tech-stack.svg" width="860" alt="DycandX — skills" />
+
+<br><br>
+
+<img src="./profile-3d-contrib/profile-night-green.svg" width="860" alt="DycandX — 3D contributions" />
+
 </div>
