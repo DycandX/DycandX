@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Avoiding failure is to avoid progress."</i> — <b>Unknown</b></p>
+<p align="center"><i>"I don't pretend to know everything; I just only speak on matters I know I'll win."</i> — <b>Criss Jami</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
