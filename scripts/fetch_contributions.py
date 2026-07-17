@@ -58,10 +58,30 @@ def fetch_year_contributions(year):
 def compute_current_streak(days):
     if not days:
         return 0, None, None
-    idx = len(days) - 1
-    # If today and yesterday are both 0, streak is 0
+        
+    # Get today's date in UTC
+    today_str = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+    
+    # Find the index of today in the days list
+    idx = -1
+    for i, d in enumerate(days):
+        if d["date"] == today_str:
+            idx = i
+            break
+            
+    # If today is not in the list, fall back to the last day that is <= today_str
+    if idx == -1:
+        for i in range(len(days) - 1, -1, -1):
+            if days[i]["date"] <= today_str:
+                idx = i
+                break
+                
+    if idx == -1:
+        return 0, None, None
+        
+    # If today is 0, check if yesterday had contributions.
+    # If yesterday is also 0, the current streak is 0.
     if days[idx]["count"] == 0:
-        # Check if yesterday had contributions to count active streak
         if idx > 0 and days[idx-1]["count"] == 0:
             return 0, None, None
         idx -= 1
@@ -75,6 +95,7 @@ def compute_current_streak(days):
     if streak == 0:
         return 0, None, None
     return streak, days[start_idx]["date"], days[end_idx]["date"]
+
 
 def compute_longest_streak(days):
     longest = run = 0
