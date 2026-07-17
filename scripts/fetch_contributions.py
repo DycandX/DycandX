@@ -151,7 +151,7 @@ if __name__ == "__main__":
             
     data = {
         "username": USERNAME,
-        "generated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generated_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "lifetime_contributions": lifetime_contributions,
         "range": {"start": all_days[0]["date"] if all_days else None, "end": all_days[-1]["date"] if all_days else None},
         "current_streak": {"length": cur_len, "start": cur_start, "end": cur_end},
