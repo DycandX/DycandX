@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"When there is nothing to do, do nothing."</i> — <b>Warren Buffett</b></p>
+<p align="center"><i>"The happiest people in the world are those who feel absolutely terrific about themselves."</i> — <b>Brian Tracy</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
