@@ -7,7 +7,7 @@ STATS_PATH = os.path.join(HERE, "..", "data", "stats.json")
 OUT = os.path.join(HERE, "..", "info-card.svg")
 STATIC = bool(os.environ.get("STATIC"))
 
-W, H = 480, 650
+W, H = 480, 660
 PAD = 20
 TITLEBAR_H = 30
 KEY_X = PAD
@@ -15,7 +15,6 @@ VAL_X = 180
 LINE_H = 20.5
 
 BG = "#161b22"
-BG2 = "#161b22"
 FRAME = "#30363d"
 MUTED = "#7d8590"
 INK = "#c9d1d9"
@@ -115,9 +114,30 @@ for key, val in DEFAULTS.items():
     if key not in stats:
         stats[key] = val
 
+css = f"""
+    .row-group {{
+      cursor: pointer;
+    }}
+    .hover-bg {{
+      fill: {ACCENT};
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }}
+    .row-group:hover .hover-bg {{
+      opacity: 0.08;
+    }}
+    .val-text {{
+      transition: fill 0.3s ease;
+    }}
+    .row-group:hover .val-text {{
+      fill: {ACCENT};
+    }}
+"""
+
 parts = [
     f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
     f'font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">',
+    f'<style>{css}</style>',
     f'<rect width="{W}" height="{H}" rx="12" fill="#161b22"/>',
     f'<path d="M 0,{TITLEBAR_H} L {W},{TITLEBAR_H} L {W},{H-12} A 12,12 0 0 1 {W-12},{H} L 12,{H} A 12,12 0 0 1 0,{H-12} Z" fill="#000000"/>',
     f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="12" fill="none" stroke="{FRAME}"/>',
@@ -150,8 +170,11 @@ for i, row in enumerate(ROWS):
         key_text = esc(row[1])
         val_key = row[3]
         val_text = esc(stats.get(val_key, ""))
-        inner = (f'<text x="{KEY_X}" y="{y:.1f}" fill="{KEY}" font-size="12.5" font-weight="700">{key_text}</text>'
-                 f'<text x="{VAL_X}" y="{y:.1f}" fill="{INK}" font-size="11">{val_text}</text>')
+        inner = (f'<g class="row-group">'
+                 f'  <rect class="hover-bg" x="{PAD/2}" y="{y - LINE_H + 5:.1f}" width="{W - PAD}" height="{LINE_H}" rx="4"/>'
+                 f'  <text x="{KEY_X}" y="{y:.1f}" fill="{KEY}" font-size="12.5" font-weight="700">{key_text}</text>'
+                 f'  <text class="val-text" x="{VAL_X}" y="{y:.1f}" fill="{INK}" font-size="11">{val_text}</text>'
+                 f'</g>')
     elif kind == "bul":
         txt = esc(row[1])
         inner = (f'<circle cx="{KEY_X+3}" cy="{y-4:.1f}" r="2.5" fill="{GREEN}"/>'
@@ -160,14 +183,17 @@ for i, row in enumerate(ROWS):
         loc_t = esc(stats.get("loc_t", "?"))
         loc_a = esc(stats.get("loc_a", "?"))
         loc_d = esc(stats.get("loc_d", "?"))
-        inner = (f'<text x="{KEY_X}" y="{y:.1f}" fill="{KEY}" font-size="12.5" font-weight="700">Line of Code</text>'
-                 f'<text x="{VAL_X}" y="{y:.1f}" font-size="11">'
-                 f'<tspan fill="{INK}">{loc_t}</tspan>'
-                 f'<tspan fill="{GREEN}">  ({loc_a}++</tspan>'
-                 f'<tspan fill="{INK}">,</tspan>'
-                 f'<tspan fill="{DEL}">  {loc_d}--</tspan>'
-                 f'<tspan fill="{INK}">)</tspan>'
-                 f'</text>')
+        inner = (f'<g class="row-group">'
+                 f'  <rect class="hover-bg" x="{PAD/2}" y="{y - LINE_H + 5:.1f}" width="{W - PAD}" height="{LINE_H}" rx="4"/>'
+                 f'  <text x="{KEY_X}" y="{y:.1f}" fill="{KEY}" font-size="12.5" font-weight="700">Line of Code</text>'
+                 f'  <text class="val-text" x="{VAL_X}" y="{y:.1f}" font-size="11">'
+                 f'    <tspan fill="{INK}">{loc_t}</tspan>'
+                 f'    <tspan fill="{GREEN}">  ({loc_a}++</tspan>'
+                 f'    <tspan fill="{INK}">,</tspan>'
+                 f'    <tspan fill="{DEL}">  {loc_d}--</tspan>'
+                 f'    <tspan fill="{INK}">)</tspan>'
+                 f'  </text>'
+                 f'</g>')
     elif kind == "colors":
         w, h = 32, 16
         gap_x = 8
