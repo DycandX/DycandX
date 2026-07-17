@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The happiest people in the world are those who feel absolutely terrific about themselves."</i> — <b>Brian Tracy</b></p>
+<p align="center"><i>"The only way to do great work is to love what you do."</i> — <b>Steve Jobs</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
