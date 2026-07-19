@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Everyone must choose one of two pains: The pain of discipline or the pain of regret."</i> — <b>Jim Rohn</b></p>
+<p align="center"><i>"Routine life is unbearable, and most people only think about how to escape into the world of fantasy and dreams."</i> — <b>Robert Greene</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
