@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Routine life is unbearable, and most people only think about how to escape into the world of fantasy and dreams."</i> — <b>Robert Greene</b></p>
+<p align="center"><i>"One mistake does not have to rule a person's entire life."</i> — <b>Joyce Meyer</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
