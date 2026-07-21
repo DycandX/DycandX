@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"One mistake does not have to rule a person's entire life."</i> — <b>Joyce Meyer</b></p>
+<p align="center"><i>"Abundance of knowledge does not teach men to be wise."</i> — <b>Heraclitus</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
