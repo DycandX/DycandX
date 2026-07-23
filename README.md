@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The question isn't who is going to let me; it's who is going to stop me."</i> — <b>Ayn Rand</b></p>
+<p align="center"><i>"Nothing will work unless you do."</i> — <b>Maya Angelou</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
