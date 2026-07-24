@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Nothing will work unless you do."</i> — <b>Maya Angelou</b></p>
+<p align="center"><i>"Death and life have their determined appointments; riches and honors depend upon heaven."</i> — <b>Confucius</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
