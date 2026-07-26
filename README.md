@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Just throw away all thoughts of imaginary things, and stand firm in that which you are."</i> — <b>Kabir</b></p>
+<p align="center"><i>"Life is love and love is life."</i> — <b>Elvis Presley</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
