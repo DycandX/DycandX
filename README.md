@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Life is love and love is life."</i> — <b>Elvis Presley</b></p>
+<p align="center"><i>"Life's too mysterious to take too serious."</i> — <b>Mary Engelbreit</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
