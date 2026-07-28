@@ -1,5 +1,5 @@
 {
-  "age": "22 years, 2 months, 29 days",
+  "age": "22 years, 3 months, 0 days",
   "os": "Windows 11, Ubuntu",
   "host": "OMEN 15",
   "kernel": "Fullstack Dev, Backend, AL/ML",
@@ -15,10 +15,10 @@
   "discord": "dycandx",
   "repos": 40,
   "stars": 26,
-  "commits": 876,
-  "followers": 3,
+  "commits": 883,
+  "followers": 4,
   "contributions": 43,
-  "loc_add": "5,349,968",
-  "loc_del": "4,003,311",
+  "loc_add": "5,350,001",
+  "loc_del": "4,003,344",
   "loc_total": "1,346,657"
 }

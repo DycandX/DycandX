@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Life's too mysterious to take too serious."</i> — <b>Mary Engelbreit</b></p>
+<p align="center"><i>"Make peace within, and there will be no one who can overcome you. And no one you will wish to overcome."</i> — <b>Dan Millman</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
