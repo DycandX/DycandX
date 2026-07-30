@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Better late than never."</i> — <b>Spencer Johnson</b></p>
+<p align="center"><i>"Trying to predict the future is like trying to drive down a country road at night with no lights while looking out the back window."</i> — <b>Peter Drucker</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
