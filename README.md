@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"If you need inspiration, don't do it."</i> — <b>Elon Musk</b></p>
+<p align="center"><i>"Just as true humor is laughter at oneself, true humanity is knowledge of oneself."</i> — <b>Alan Watts</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
