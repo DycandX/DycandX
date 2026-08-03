@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"It's better to have a short life that is full of what you like doing, than a long life spent in a miserable way."</i> — <b>Alan Watts</b></p>
+<p align="center"><i>"Trust in dreams, for in them is the hidden gate to eternity."</i> — <b>Kahlil Gibran</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
