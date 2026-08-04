@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Trust in dreams, for in them is the hidden gate to eternity."</i> — <b>Kahlil Gibran</b></p>
+<p align="center"><i>"Honesty is the first chapter in the book of wisdom."</i> — <b>Thomas Jefferson</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
