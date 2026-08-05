@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Honesty is the first chapter in the book of wisdom."</i> — <b>Thomas Jefferson</b></p>
+<p align="center"><i>"Everybody needs a passion. That's what keeps life interesting."</i> — <b>Betty White</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
