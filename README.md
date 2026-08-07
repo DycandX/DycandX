@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Being ignorant is not so much a shame, as being unwilling to learn."</i> — <b>Benjamin Franklin</b></p>
+<p align="center"><i>"Persistence is very important. You should not give up unless you are forced to give up."</i> — <b>Elon Musk</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
