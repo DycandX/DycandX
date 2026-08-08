@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Persistence is very important. You should not give up unless you are forced to give up."</i> — <b>Elon Musk</b></p>
+<p align="center"><i>"A good stance and posture reflect a proper state of mind."</i> — <b>Morihei Ueshiba</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
