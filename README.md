@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"A good stance and posture reflect a proper state of mind."</i> — <b>Morihei Ueshiba</b></p>
+<p align="center"><i>"Remember the entrance to the sanctuary is inside you."</i> — <b>Rumi</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
