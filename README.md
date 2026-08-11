@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Each path to knowledge involves different rules and these rules are not interchangeable."</i> — <b>Barack Obama</b></p>
+<p align="center"><i>"You can't have anything worthwhile without difficulties."</i> — <b>Harry S. Truman</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
