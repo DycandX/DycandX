@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"You can't have anything worthwhile without difficulties."</i> — <b>Harry S. Truman</b></p>
+<p align="center"><i>"Just get out and do it. You will be very, very glad that you did."</i> — <b>Christopher McCandless</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
