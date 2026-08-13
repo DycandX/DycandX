@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Just get out and do it. You will be very, very glad that you did."</i> — <b>Christopher McCandless</b></p>
+<p align="center"><i>"The secret of happiness is not in doing what you like but in liking what you have to do."</i> — <b>Sathya Sai Baba</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
