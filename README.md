@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Reversing your treatment of the man you have wronged is better than asking his forgiveness."</i> — <b>Elbert Hubbard</b></p>
+<p align="center"><i>"Some people want it to happen, some wish it would happen, others make it happen."</i> — <b>Michael Jordan</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
