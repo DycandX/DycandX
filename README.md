@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Some people want it to happen, some wish it would happen, others make it happen."</i> — <b>Michael Jordan</b></p>
+<p align="center"><i>"I begin with an idea and then it becomes something else."</i> — <b>Pablo Picasso</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
