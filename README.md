@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"It's the unknown we fear when we look upon death and darkness, nothing more."</i> — <b>Albus Dumbledore</b></p>
+<p align="center"><i>"Don't gain the world and lose your soul. Wisdom is better than silver and gold."</i> — <b>Bob Marley</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
