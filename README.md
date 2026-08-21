@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time."</i> — <b>Thomas Edison</b></p>
+<p align="center"><i>"A diamond is a piece of charcoal that handled stress exceptionally well."</i> — <b>Unknown</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
