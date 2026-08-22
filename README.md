@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"A diamond is a piece of charcoal that handled stress exceptionally well."</i> — <b>Unknown</b></p>
+<p align="center"><i>"There is no path to Peace. Peace is the path."</i> — <b>Dan Millman</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
