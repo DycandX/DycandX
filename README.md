@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"There is no path to Peace. Peace is the path."</i> — <b>Dan Millman</b></p>
+<p align="center"><i>"Our thoughts are highly influenced by the people around us and everything we read, see, and do."</i> — <b>Jeff Booth</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
