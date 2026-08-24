@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Our thoughts are highly influenced by the people around us and everything we read, see, and do."</i> — <b>Jeff Booth</b></p>
+<p align="center"><i>"There is no greatness where there is not simplicity, goodness, and truth."</i> — <b>Leo Tolstoy</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
