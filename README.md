@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"There is no greatness where there is not simplicity, goodness, and truth."</i> — <b>Leo Tolstoy</b></p>
+<p align="center"><i>"It's very strange that the people you love are often the people you're most cruel to."</i> — <b>Kenneth Branagh</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />

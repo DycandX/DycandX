@@ -1,20 +1,20 @@
 {
   "username": "DycandX",
-  "generated_at": "2026-08-24T21:30:34Z",
-  "lifetime_contributions": 1255,
+  "generated_at": "2026-08-25T21:30:40Z",
+  "lifetime_contributions": 1259,
   "range": {
     "start": "2022-01-01",
     "end": "2026-12-31"
   },
   "current_streak": {
-    "length": 48,
-    "start": "2026-07-08",
-    "end": "2026-08-24"
-  },
-  "longest_streak": {
     "length": 49,
     "start": "2026-07-08",
     "end": "2026-08-25"
+  },
+  "longest_streak": {
+    "length": 50,
+    "start": "2026-07-08",
+    "end": "2026-08-26"
   },
   "best_day": {
     "date": "2026-07-11",
@@ -23,7 +23,7 @@
   "years": [
     {
       "year": 2026,
-      "total": 856,
+      "total": 860,
       "days": [
         {
           "date": "2026-01-01",
@@ -967,15 +967,15 @@
         },
         {
           "date": "2026-08-24",
-          "count": 4
+          "count": 5
         },
         {
           "date": "2026-08-25",
-          "count": 1
+          "count": 2
         },
         {
           "date": "2026-08-26",
-          "count": 0
+          "count": 2
         },
         {
           "date": "2026-08-27",
