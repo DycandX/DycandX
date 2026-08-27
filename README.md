@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Be the reason someone smiles. Be the reason someone feels loved and believes in the goodness in people."</i> — <b>Roy T. Bennett</b></p>
+<p align="center"><i>"Opportunity is missed by most people because it is dressed in overalls and looks like work."</i> — <b>Thomas Edison</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
