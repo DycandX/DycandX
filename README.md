@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Whether you have a problem in your life or not depends upon your own attitude, your own understanding."</i> — <b>Shunryu Suzuki</b></p>
+<p align="center"><i>"To live is the rarest thing in the world. Most people exist, that is all."</i> — <b>Oscar Wilde</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />

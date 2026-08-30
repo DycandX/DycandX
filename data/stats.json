@@ -1,5 +1,5 @@
 {
-  "age": "22 years, 4 months, 1 day",
+  "age": "22 years, 4 months, 2 days",
   "os": "Windows 11, Ubuntu",
   "host": "OMEN 15",
   "kernel": "Fullstack Dev, Backend, AL/ML",
@@ -13,12 +13,12 @@
   "email": "zulvikar.kharisma22@gmail.com",
   "linkedin": "in/zulvikar-kharisma",
   "discord": "dycandx",
-  "repos": 43,
+  "repos": 44,
   "stars": 26,
-  "commits": 1151,
+  "commits": 1212,
   "followers": 5,
-  "contributions": 46,
-  "loc_add": "5,544,944",
-  "loc_del": "4,076,937",
-  "loc_total": "1,468,007"
+  "contributions": 47,
+  "loc_add": "5,565,115",
+  "loc_del": "4,078,342",
+  "loc_total": "1,486,773"
 }
