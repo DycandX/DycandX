@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"To live is the rarest thing in the world. Most people exist, that is all."</i> — <b>Oscar Wilde</b></p>
+<p align="center"><i>"When things are a disappointment, try not to be so discouraged."</i> — <b>Carol Burnett</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
