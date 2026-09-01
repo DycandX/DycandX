@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"When things are a disappointment, try not to be so discouraged."</i> — <b>Carol Burnett</b></p>
+<p align="center"><i>"A man with outward courage dares to die: a man with inner courage dares to live."</i> — <b>Lao Tzu</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
