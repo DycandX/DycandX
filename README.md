@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The road to success is always under construction.."</i> — <b>Lily Tomlin</b></p>
+<p align="center"><i>"Passion is energy. Feel the power that comes from focusing on what excites you."</i> — <b>Oprah Winfrey</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
