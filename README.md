@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Success is often achieved by those who don't know that failure is inevitable."</i> — <b>Coco Chanel</b></p>
+<p align="center"><i>"We build too many walls and not enough bridges."</i> — <b>Isaac Newton</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
