@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"We build too many walls and not enough bridges."</i> — <b>Isaac Newton</b></p>
+<p align="center"><i>"Man is made by his belief. As he believes, so he is."</i> — <b>Bhagavad Gita</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
