@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Hardly anybody recognizes the most significant moments of their life at the time they happen."</i> — <b>W.P. Kinsella</b></p>
+<p align="center"><i>"Failure is an option, fear is not."</i> — <b>James Cameron</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
