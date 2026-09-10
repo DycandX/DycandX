@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Failure is an option, fear is not."</i> — <b>James Cameron</b></p>
+<p align="center"><i>"People are not disturbed by things, but by the views they take of them."</i> — <b>Epictetus</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
