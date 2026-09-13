@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The secret of life isn't what happens to you, but what you do with what happens to you."</i> — <b>Norman Vincent Peale</b></p>
+<p align="center"><i>"Human behavior flows from three main sources: desire, emotion, and knowledge."</i> — <b>Plato</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
