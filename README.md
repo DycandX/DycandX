@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Human behavior flows from three main sources: desire, emotion, and knowledge."</i> — <b>Plato</b></p>
+<p align="center"><i>"You'll never find rainbows if you're looking down."</i> — <b>Charlie Chaplin</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
