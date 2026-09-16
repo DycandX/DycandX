@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The heart that gives, gathers."</i> — <b>Lao Tzu</b></p>
+<p align="center"><i>"Change begets change. Nothing propagates so fast."</i> — <b>Charles Dickens</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
