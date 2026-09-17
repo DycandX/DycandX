@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Change begets change. Nothing propagates so fast."</i> — <b>Charles Dickens</b></p>
+<p align="center"><i>"The few who do are the envy of the many who only watch."</i> — <b>Jim Rohn</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
