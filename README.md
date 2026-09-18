@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The few who do are the envy of the many who only watch."</i> — <b>Jim Rohn</b></p>
+<p align="center"><i>"Every saint has a past, and every sinner has a future."</i> — <b>Oscar Wilde</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
