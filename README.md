@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Every saint has a past, and every sinner has a future."</i> — <b>Oscar Wilde</b></p>
+<p align="center"><i>"Life goes by fast. Enjoy it. Calm down. It's all funny."</i> — <b>Joan Rivers</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
