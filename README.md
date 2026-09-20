@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Life goes by fast. Enjoy it. Calm down. It's all funny."</i> — <b>Joan Rivers</b></p>
+<p align="center"><i>"Numbing the pain for a while will make it worse when you finally feel it."</i> — <b>Albus Dumbledore</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
