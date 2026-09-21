@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Numbing the pain for a while will make it worse when you finally feel it."</i> — <b>Albus Dumbledore</b></p>
+<p align="center"><i>"Everything eaten is killed. Every meal is a sacrifice."</i> — <b>Adi Da Samraj</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
