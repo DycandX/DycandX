@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Everything eaten is killed. Every meal is a sacrifice."</i> — <b>Adi Da Samraj</b></p>
+<p align="center"><i>"Human happiness and moral duty are inseparably connected."</i> — <b>George Washington</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
