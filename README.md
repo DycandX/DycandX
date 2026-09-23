@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Human happiness and moral duty are inseparably connected."</i> — <b>George Washington</b></p>
+<p align="center"><i>"Enlightenment is intimacy with all things."</i> — <b>Dogen</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
