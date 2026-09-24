@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Enlightenment is intimacy with all things."</i> — <b>Dogen</b></p>
+<p align="center"><i>"You don't earn loyalty in a day. You earn loyalty day-by-day."</i> — <b>Jeffrey Gitomer</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
