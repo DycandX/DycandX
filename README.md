@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"You don't earn loyalty in a day. You earn loyalty day-by-day."</i> — <b>Jeffrey Gitomer</b></p>
+<p align="center"><i>"Greatest success comes just one step beyond the point at which defeat overtakes you."</i> — <b>Unknown</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
