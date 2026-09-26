@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Greatest success comes just one step beyond the point at which defeat overtakes you."</i> — <b>Unknown</b></p>
+<p align="center"><i>"If you carry joy in your heart, you can heal any moment."</i> — <b>Neale Donald Walsch</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
