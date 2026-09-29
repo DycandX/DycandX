@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Abundance of knowledge does not teach men to be wise."</i> — <b>Heraclitus</b></p>
+<p align="center"><i>"It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends."</i> — <b>Albus Dumbledore</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
