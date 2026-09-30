@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends."</i> — <b>Albus Dumbledore</b></p>
+<p align="center"><i>"It is in the darkness that one finds the light."</i> — <b>Meister Eckhart</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
