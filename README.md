@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"It is in the darkness that one finds the light."</i> — <b>Meister Eckhart</b></p>
+<p align="center"><i>"The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty."</i> — <b>Winston Churchill</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
