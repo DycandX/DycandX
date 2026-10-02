@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty."</i> — <b>Winston Churchill</b></p>
+<p align="center"><i>"Forget yesterday - it has already forgotten you. Don't sweat tomorrow - you haven't even met. Instead, open your eyes and your heart to a truly precious gift - today."</i> — <b>Steve Maraboli</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
