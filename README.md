@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"You may think I'm small, but I have a universe inside my mind."</i> — <b>Yoko Ono</b></p>
+<p align="center"><i>"There's a very deep connection among human beings. All we have to do is open our minds to it."</i> — <b>Yanni</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
