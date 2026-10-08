@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"An intelligence test sometimes shows a man how smart he would have been not to have taken it."</i> — <b>Laurence J. Peter</b></p>
+<p align="center"><i>"When we think about our strengths, we are strong. When we think about our weaknesses, we are weak."</i> — <b>Peter A. Cohen</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
