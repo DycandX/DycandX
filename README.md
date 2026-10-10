@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Reading should be a pleasure, not a chore."</i> — <b>Joan Rivers</b></p>
+<p align="center"><i>"The highest form of ignorance is when you reject something you don't know anything about."</i> — <b>Wayne Dyer</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
