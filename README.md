@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The highest form of ignorance is when you reject something you don't know anything about."</i> — <b>Wayne Dyer</b></p>
+<p align="center"><i>"Life doesn't get easier or more forgiving, we get stronger and more resilient."</i> — <b>Steve Maraboli</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
