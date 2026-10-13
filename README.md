@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Best be yourself, imperial, plain, and true."</i> — <b>Robert Browning</b></p>
+<p align="center"><i>"Quality is not an act, it is a habit."</i> — <b>Colin R. Davis</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
