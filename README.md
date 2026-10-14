@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Quality is not an act, it is a habit."</i> — <b>Colin R. Davis</b></p>
+<p align="center"><i>"If you love somebody, let them go, for if they return, they were always yours. If they don't, they never were."</i> — <b>Kahlil Gibran</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
