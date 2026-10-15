@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"If you love somebody, let them go, for if they return, they were always yours. If they don't, they never were."</i> — <b>Kahlil Gibran</b></p>
+<p align="center"><i>"Never close your lips to those whom you have already opened your heart."</i> — <b>Charles Dickens</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
