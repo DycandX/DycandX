@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Never close your lips to those whom you have already opened your heart."</i> — <b>Charles Dickens</b></p>
+<p align="center"><i>"Nothing can bring you peace but yourself."</i> — <b>Dale Carnegie</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
