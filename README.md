@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Life is just the same as learning to swim. Do not be afraid of making mistakes, for there is no other way of learning how to live!"</i> — <b>Alfred Adler</b></p>
+<p align="center"><i>"Keep your dreams, you never know when you might need them."</i> — <b>Carlos Ruiz Zafon</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
