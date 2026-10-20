@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Wit is educated insolence."</i> — <b>Aristotle</b></p>
+<p align="center"><i>"Speak when you are angry - and you'll make the best speech you'll ever regret."</i> — <b>Laurence J. Peter</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
