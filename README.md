@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Speak when you are angry - and you'll make the best speech you'll ever regret."</i> — <b>Laurence J. Peter</b></p>
+<p align="center"><i>"Procrastination is attitude's natural assassin. There's nothing so fatiguing as an uncompleted task."</i> — <b>William James</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
