@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Procrastination is attitude's natural assassin. There's nothing so fatiguing as an uncompleted task."</i> — <b>William James</b></p>
+<p align="center"><i>"A man, as a general rule, owes very little to what he is born with - a man is what he makes of himself."</i> — <b>Alexander Graham Bell</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
