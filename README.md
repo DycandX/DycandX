@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"A man, as a general rule, owes very little to what he is born with - a man is what he makes of himself."</i> — <b>Alexander Graham Bell</b></p>
+<p align="center"><i>"Men are equal; it is not birth but virtue that makes the difference."</i> — <b>Voltaire</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
