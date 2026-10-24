@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Men are equal; it is not birth but virtue that makes the difference."</i> — <b>Voltaire</b></p>
+<p align="center"><i>"Your past does not equal your future."</i> — <b>Tony Robbins</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
