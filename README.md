@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Your past does not equal your future."</i> — <b>Tony Robbins</b></p>
+<p align="center"><i>"Don't give up the fight, Stand up for your rights."</i> — <b>Bob Marley</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
