@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The soul is neither born, and nor does it die."</i> — <b>Bhagavad Gita</b></p>
+<p align="center"><i>"Art is to console those who are broken by life."</i> — <b>Vincent van Gogh</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
