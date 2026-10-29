@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Art is to console those who are broken by life."</i> — <b>Vincent van Gogh</b></p>
+<p align="center"><i>"Preoccupied with a single leaf you won't see the tree."</i> — <b>Unknown</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
