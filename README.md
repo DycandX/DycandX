@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"It is the greatest of all mistakes to do nothing because you can only do little; do something."</i> — <b>Sydney Smith</b></p>
+<p align="center"><i>"What loneliness is more lonely than distrust?"</i> — <b>George Eliot</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
