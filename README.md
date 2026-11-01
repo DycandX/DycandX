@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"What loneliness is more lonely than distrust?"</i> — <b>George Eliot</b></p>
+<p align="center"><i>"The more rejection you get, the better you are, the more you've learned, the closer you are to your outcome."</i> — <b>Tony Robbins</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
