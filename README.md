@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The more rejection you get, the better you are, the more you've learned, the closer you are to your outcome."</i> — <b>Tony Robbins</b></p>
+<p align="center"><i>"To earn more you must learn more."</i> — <b>Brian Tracy</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
