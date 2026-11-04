@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Awaken. Take heed, do not squander your life."</i> — <b>Dogen</b></p>
+<p align="center"><i>"One loyal friend is worth ten thousand relatives."</i> — <b>Euripides</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
