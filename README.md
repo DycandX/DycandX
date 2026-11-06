@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"I love fools' experiments. I am always making them."</i> — <b>Charles Darwin</b></p>
+<p align="center"><i>"Teachers open the door. You enter by yourself."</i> — <b>Chinese Proverb</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
