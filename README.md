@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Teachers open the door. You enter by yourself."</i> — <b>Chinese Proverb</b></p>
+<p align="center"><i>"Victorious warriors win first and then go to war, while defeated warriors go to war first and then seek to win."</i> — <b>Sun Tzu</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
