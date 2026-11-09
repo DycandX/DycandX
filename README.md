@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"You can never cross the ocean unless you have the courage to lose sight of the shore."</i> — <b>Christopher Columbus</b></p>
+<p align="center"><i>"Every artist dips his brush in his own soul, and paints his own nature into his pictures."</i> — <b>Henry Ward Beecher</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
