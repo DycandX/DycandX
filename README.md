@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Every artist dips his brush in his own soul, and paints his own nature into his pictures."</i> — <b>Henry Ward Beecher</b></p>
+<p align="center"><i>"A dream doesn't become reality through magic it takes sweat, determination and hard work."</i> — <b>Colin Powell</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
