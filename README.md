@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"A zen master's life is one continuous mistake."</i> — <b>Dogen</b></p>
+<p align="center"><i>"My guiding principle is this: Guilt is never to be doubted."</i> — <b>Franz Kafka</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
