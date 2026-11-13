@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"My guiding principle is this: Guilt is never to be doubted."</i> — <b>Franz Kafka</b></p>
+<p align="center"><i>"Those who can make you believe absurdities can make you commit atrocities."</i> — <b>Voltaire</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
