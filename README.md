@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"A dream doesn't become reality through magic it takes sweat, determination and hard work."</i> — <b>Colin Powell</b></p>
+<p align="center"><i>"Make each day your masterpiece."</i> — <b>John Wooden</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
