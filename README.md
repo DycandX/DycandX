@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Happiness is pretty simple: someone to love, something to do, something to look forward to."</i> — <b>Rita Mae Brown</b></p>
+<p align="center"><i>"What do we live for if not to make life less difficult for each other?"</i> — <b>T.S. Eliot</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
