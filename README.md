@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Leave the beaten track behind occasionally and dive into the woods. Every time you do you will be certain to find something you have never seen before."</i> — <b>Alexander Graham Bell</b></p>
+<p align="center"><i>"Truth is not something outside to be discovered, it is something inside to be realized."</i> — <b>Osho</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
