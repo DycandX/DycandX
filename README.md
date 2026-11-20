@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Truth is not something outside to be discovered, it is something inside to be realized."</i> — <b>Osho</b></p>
+<p align="center"><i>"He who leaves the game wins it."</i> — <b>Nicolas Chamfort</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
