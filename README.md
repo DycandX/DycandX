@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"He who leaves the game wins it."</i> — <b>Nicolas Chamfort</b></p>
+<p align="center"><i>"Nothing is more creative...nor destructive...than a brilliant mind with a purpose."</i> — <b>Dan Brown</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
