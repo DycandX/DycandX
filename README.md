@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Nothing is more creative...nor destructive...than a brilliant mind with a purpose."</i> — <b>Dan Brown</b></p>
+<p align="center"><i>"Who you are is defined by what you're willing to struggle for."</i> — <b>Mark Manson</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
