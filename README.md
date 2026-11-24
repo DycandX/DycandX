@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Growth comes at the point of resistance."</i> — <b>Josh Waitzkin</b></p>
+<p align="center"><i>"The guest will judge better of a feast than the cook."</i> — <b>Aristotle</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
