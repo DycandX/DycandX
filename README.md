@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"The guest will judge better of a feast than the cook."</i> — <b>Aristotle</b></p>
+<p align="center"><i>"Faith means believing the unbelievable."</i> — <b>Gilbert Chesterton</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
