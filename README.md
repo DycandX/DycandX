@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Faith means believing the unbelievable."</i> — <b>Gilbert Chesterton</b></p>
+<p align="center"><i>"Decide what your truth is. Then live it."</i> — <b>Kamal Ravikant</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
