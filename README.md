@@ -18,7 +18,7 @@
 <br>
 
 <!-- QUOTE_START -->
-<p align="center"><i>"Decide what your truth is. Then live it."</i> — <b>Kamal Ravikant</b></p>
+<p align="center"><i>"If you let your head get too big, it'll break your neck."</i> — <b>Elvis Presley</b></p>
 <!-- QUOTE_END -->
 
 <img src="./contrib-heatmap.svg" width="860" alt="DycandX — contribution graph" />
